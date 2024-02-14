@@ -30,7 +30,8 @@ import ModeChanger from './ModeChanger'
 import { useSettings } from '@core/hooks/useSettings'
 
 // Core Theme Imports
-import defaultCoreTheme from '@core/theme'
+// import defaultCoreTheme from '@core/theme'
+import mergedTheme from './mergedTheme'
 
 type Props = ChildrenType & {
   direction: Direction
@@ -61,30 +62,30 @@ const ThemeProvider = (props: Props) => {
 
   // Merge the primary color scheme override with the core theme
   const theme = useMemo(() => {
-    const newColorScheme = {
-      colorSchemes: {
-        light: {
-          palette: {
-            primary: {
-              main: settings.primaryColor,
-              light: lighten(settings.primaryColor as string, 0.2),
-              dark: darken(settings.primaryColor as string, 0.1)
-            }
-          }
-        },
-        dark: {
-          palette: {
-            primary: {
-              main: settings.primaryColor,
-              light: lighten(settings.primaryColor as string, 0.2),
-              dark: darken(settings.primaryColor as string, 0.1)
-            }
-          }
-        }
-      }
-    }
+    //   const newColorScheme = {
+    //     colorSchemes: {
+    //       light: {
+    //         palette: {
+    //           primary: {
+    //             main: settings.primaryColor,
+    //             light: lighten(settings.primaryColor as string, 0.2),
+    //             dark: darken(settings.primaryColor as string, 0.1)
+    //           }
+    //         }
+    //       },
+    //       dark: {
+    //         palette: {
+    //           primary: {
+    //             main: settings.primaryColor,
+    //             light: lighten(settings.primaryColor as string, 0.2),
+    //             dark: darken(settings.primaryColor as string, 0.1)
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
 
-    const coreTheme = deepmerge(defaultCoreTheme(settings, currentMode, direction), newColorScheme)
+    const coreTheme = deepmerge(mergedTheme(settings, currentMode, direction), mergedTheme)
 
     return extendTheme(coreTheme)
 

@@ -43,6 +43,7 @@
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "next": "^14.0.4",
+    "next-auth": "^4.24.5",
     "postcss": "^8.4.33",
     "postcss-styled-syntax": "^0.6.4",
     "prettier": "^3.1.1",
@@ -60,6 +61,7 @@
     "tailwindcss": "^3.4.1",
     "tailwindcss-logical": "^3.0.1",
     "tsx": "^4.7.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "valibot": "^0.28.1"
   }
 }

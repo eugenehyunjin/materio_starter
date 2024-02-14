@@ -53,8 +53,8 @@ export type Config = {
 }
 
 const themeConfig: Config = {
-  templateName: 'Materio',
-  settingsCookieName: 'materio-mui-next-demo-1',
+  templateName: 'EZTeam',
+  settingsCookieName: 'EZTeam-demo-1',
   mode: 'system', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
   semiDark: false, // true, false

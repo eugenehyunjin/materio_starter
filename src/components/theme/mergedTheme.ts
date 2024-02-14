@@ -6,6 +6,8 @@
  * Export this file and import it in the `@components/theme/index.tsx` file to use the merged theme.
  */
 
+import { Noto_Sans_KR } from 'next/font/google'
+
 // MUI Imports
 import { deepmerge } from '@mui/utils'
 import type { Theme } from '@mui/material/styles'
@@ -17,10 +19,37 @@ import type { SystemMode } from '@core/types'
 // Core Theme Imports
 import coreTheme from '@core/theme'
 
+const noto = Noto_Sans_KR({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900']
+})
+
 const mergedTheme = (settings: Settings, mode: SystemMode, direction: Theme['direction']) => {
   // Vars
   const userTheme = {
-    // Write your overrides here.
+    typography: {
+      fontFamily: noto.style.fontFamily
+    },
+    colorSchemes: {
+      light: {
+        palette: {
+          primary: {
+            light: '#4caf50',
+            main: '#2e7d32',
+            dark: '#1b5e20'
+          }
+        }
+      },
+      dark: {
+        palette: {
+          primary: {
+            light: '#4caf50',
+            main: '#2e7d32',
+            dark: '#1b5e20'
+          }
+        }
+      }
+    }
   } as Theme
 
   return deepmerge(coreTheme(settings, mode, direction), userTheme)
