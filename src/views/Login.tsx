@@ -21,7 +21,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 // import classnames from 'classnames'
 
 // Type Imports
-import type { Mode } from '@core/types'
+// import type { Mode } from '@core/types'
 
 // Component Imports
 // import Logo from '@core/svg/Logo'
@@ -36,7 +36,7 @@ import themeConfig from '@configs/themeConfig'
 // import { useImageVariant } from '@core/hooks/useImageVariant'
 // import { useSettings } from '@core/hooks/useSettings'
 
-const LoginV2 = ({ mode }: { mode: Mode }) => {
+const LoginV2 = () => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
 
