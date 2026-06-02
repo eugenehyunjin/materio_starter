@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { Box, Container, Divider, Stack, Typography } from '@mui/material'
+import { Box, Container, Stack, Typography } from '@mui/material'
 
 export default function PublicFooter() {
   return (
