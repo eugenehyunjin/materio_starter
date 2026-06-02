@@ -8,16 +8,16 @@ import { PUBLIC_NAVIGATION } from '@/constants/navigation'
 const PublicHeader = () => {
   return (
     <header className='fixed top-0 left-0 z-50 w-full border-b border-gray-100 bg-white shadow-sm transition-all duration-300'>
-      <div className='mx-auto flex h-24 max-w-[1600px] items-center justify-between px-6 lg:px-10'>
+      <div className='mx-auto flex h-24 items-center justify-between px-10 lg:px-10'>
         {/* Logo */}
         <Link href='/' className='flex items-center'>
           <Image
-            src='/images/logo/bk_large_ko.png'
+            src='/images/logo/bk_large_ko.svg'
             alt='BKWINNER'
             width={250}
             height={50}
             priority
-            className='h-auto w-[250px] lg:w-[250px]'
+            className='h-auto w-[200px] lg:w-[200px]'
           />
         </Link>
 
@@ -27,7 +27,7 @@ const PublicHeader = () => {
             <Link
               key={menu.href}
               href={menu.href}
-              className='text-md font-medium tracking-wide text-black transition-colors duration-200 hover:text-green-600'
+              className='text-lg font-medium tracking-wide text-black transition-colors duration-200 hover:text-green-600'
             >
               {menu.label}
             </Link>

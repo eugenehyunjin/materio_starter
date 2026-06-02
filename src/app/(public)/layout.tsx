@@ -1,4 +1,10 @@
+'use client'
+
 import type { ReactNode } from 'react'
+
+import { ThemeProvider, CssBaseline } from '@mui/material'
+
+import { publicTheme } from '@/styles/publicTheme'
 
 import PublicHeader from '@/components/layout/home/PublicHeader'
 import PublicFooter from '@/components/layout/home/PublicFooter'
@@ -9,12 +15,14 @@ type Props = {
 
 export default function PublicLayout({ children }: Props) {
   return (
-    <>
+    <ThemeProvider theme={publicTheme}>
+      <CssBaseline />
+
       <PublicHeader />
 
-      <main className='pt-20'>{children}</main>
+      <main>{children}</main>
 
       <PublicFooter />
-    </>
+    </ThemeProvider>
   )
 }

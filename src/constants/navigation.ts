@@ -1,7 +1,7 @@
 export const PUBLIC_NAVIGATION = [
   {
-    label: 'COMPANY',
-    href: '/company'
+    label: 'ABOUT',
+    href: '/about'
   },
   {
     label: 'APTREE',

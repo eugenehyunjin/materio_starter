@@ -42,6 +42,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
+    "framer-motion": "^12.40.0",
     "next": "^14.0.4",
     "next-auth": "^4.24.5",
     "postcss": "^8.4.33",
