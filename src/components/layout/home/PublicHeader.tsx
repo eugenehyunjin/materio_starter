@@ -1,15 +1,39 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import Link from 'next/link'
 import Image from 'next/image'
 
 import { PUBLIC_NAVIGATION } from '@/constants/navigation'
 
 const PublicHeader = () => {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
-    <header className='fixed top-0 left-0 z-50 w-full border-b border-gray-100 bg-white shadow-sm transition-all duration-300'>
-      <div className='mx-auto flex h-24 items-center justify-between px-10 lg:px-10'>
-        {/* Logo */}
+    <header
+      className={`
+        fixed top-0 left-0 z-50 w-full
+        bg-white
+        transition-all duration-100
+      `}
+      style={{
+        boxShadow: isScrolled ? '0 8px 30px rgba(0,0,0,0.15)' : 'none'
+      }}
+    >
+      <div className='mx-auto flex h-20 items-center justify-between px-10 lg:px-10'>
         <Link href='/' className='flex items-center'>
           <Image
             src='/images/logo/bk_large_ko.svg'
@@ -21,32 +45,19 @@ const PublicHeader = () => {
           />
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className='hidden items-center gap-10 lg:flex'>
           {PUBLIC_NAVIGATION.map(menu => (
             <Link
               key={menu.href}
               href={menu.href}
-              className='text-lg font-medium tracking-wide text-black transition-colors duration-200 hover:text-green-600'
+              className='text-lg font-bold tracking-wide text-black transition-colors duration-200 hover:text-green-600'
             >
               {menu.label}
             </Link>
           ))}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button className='flex h-10 w-10 items-center justify-center text-black lg:hidden'>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            strokeWidth={1.5}
-            stroke='currentColor'
-            className='h-7 w-7'
-          >
-            <path strokeLinecap='round' strokeLinejoin='round' d='M3.75 6.75h16.5m-16.5 5.25h16.5m-16.5 5.25h16.5' />
-          </svg>
-        </button>
+        <button className='flex h-10 w-10 items-center justify-center text-black lg:hidden'>...</button>
       </div>
     </header>
   )

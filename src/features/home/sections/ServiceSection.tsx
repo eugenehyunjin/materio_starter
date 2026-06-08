@@ -1,61 +1,150 @@
-import { Box, Container, Stack, Typography } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 
-import GlassButton from '@/components/common/button/GlassButton'
-import { notoSerifKr } from '@/styles/fonts'
-import FadeUp from '@/components/motion/FadeUp'
+import { FadeUp, ScaleUpText } from '@/components/motion'
+
+const cards = [
+  {
+    image: '/images/home/section2/aptree.png'
+  },
+  {
+    image: '/images/home/section2/blockchain.png'
+  },
+  {
+    image: '/images/home/section2/aimonitoring.png'
+  },
+  {
+    image: '/images/home/section2/software.png'
+  }
+]
 
 export default function ServiceSection() {
+  const positions = [
+    {
+      top: 0,
+      left: '50%',
+      transform: 'translateX(-50%)'
+    },
+    {
+      top: 180,
+      left: 20
+    },
+    {
+      top: 180,
+      right: 20
+    },
+    {
+      top: 420,
+      left: '50%',
+      transform: 'translateX(-50%)'
+    }
+  ]
+
   return (
     <Box
       sx={{
-        py: 50,
-        backgroundImage: 'url(/images/home/section/service_section_bg.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        position: 'relative',
+        py: {
+          xs: 15,
+          md: 15
+        }
       }}
     >
-      <Container maxWidth={false} sx={{ maxWidth: '1300px' }}>
-        <Stack spacing={3} maxWidth={800}>
+      <Container
+        maxWidth={false}
+        sx={{
+          position: 'relative',
+          zIndex: 1,
+          maxWidth: '1300px'
+        }}
+      >
+        {/* Title */}
+        <Box
+          sx={{
+            textAlign: 'center',
+            mb: 12
+          }}
+        >
           <FadeUp>
             <Typography
-              variant='h3'
               sx={{
-                fontWeight: 500,
-                color: '#111',
                 fontSize: {
-                  xs: '28px',
-                  md: '36px',
-                  lg: '40px'
-                }
+                  xs: '34px',
+                  md: '52px'
+                },
+                fontWeight: 700,
+                color: '#111',
+                lineHeight: 1.4
               }}
             >
-              <Box className={notoSerifKr.className}>일상을 연결하는 스마트 서비스</Box>
+              소비자의 <ScaleUpText delay={0.5}>생각</ScaleUpText>과 <ScaleUpText delay={0.7}>행동</ScaleUpText>
+              을 연구분석하여
+              <br />
+              소비자 중심의 <ScaleUpText delay={0.9}>공동주택 생활 환경</ScaleUpText>을 만들어 갑니다.
             </Typography>
           </FadeUp>
-          <FadeUp>
-            <Typography
-              variant='h5'
-              className={notoSerifKr.className}
-              sx={{
-                color: '#111',
-                lineHeight: 1.5,
-                fontSize: {
-                  xs: '22px',
-                  md: '22px',
-                  lg: '22px'
-                }
-              }}
-            >
-              <Box className={notoSerifKr.className}>
-                입주민과 관리사무소를 연결하며
-                <br />더 편리한 주거환경을 만들어갑니다.
+        </Box>
+
+        {/* Floating Cards */}
+        <Box
+          sx={{
+            position: 'relative',
+            width: '100%',
+            maxWidth: '1300px',
+            height: '1000px',
+            mx: 'auto'
+          }}
+        >
+          {cards.map((card, index) => (
+            <FadeUp key={card.image}>
+              <Box
+                sx={{
+                  position: 'absolute',
+                  width: 385,
+                  height: 385,
+
+                  ...positions[index],
+
+                  borderRadius: '28px',
+                  overflow: 'hidden',
+
+                  boxShadow: '0 20px 60px rgba(0,0,0,.22)',
+
+                  transition: 'transform .8s cubic-bezier(.22,.61,.36,1), box-shadow .8s cubic-bezier(.22,.61,.36,1)',
+
+                  '&:hover': {
+                    transform: positions[index].transform
+                      ? `${positions[index].transform} translateY(-16px)`
+                      : 'translateY(-16px)',
+
+                    boxShadow: '0 35px 80px rgba(0,0,0,.28)'
+                  },
+
+                  '&:hover .card-image': {
+                    transform: 'scale(1.08)',
+                    boxShadow: '0 35px 80px rgba(0,0,0,.28), 0 0 40px rgba(0,168,135,.12)'
+                  }
+                }}
+              >
+                <Box
+                  className='card-image'
+                  sx={{
+                    width: '100%',
+                    height: '100%',
+
+                    backgroundImage: `url(${card.image})`,
+                    backgroundSize: '125%',
+                    backgroundPosition: 'top',
+                    backgroundRepeat: 'no-repeat',
+
+                    transition: 'transform .8s cubic-bezier(.22,.61,.36,1)',
+
+                    transform: 'scale(1)'
+                  }}
+                />
               </Box>
-            </Typography>
-          </FadeUp>
-          <FadeUp>
-            <GlassButton sx={{ width: 180 }}>회사 소개 바로가기</GlassButton>
-          </FadeUp>
-        </Stack>
+            </FadeUp>
+          ))}
+        </Box>
       </Container>
     </Box>
   )

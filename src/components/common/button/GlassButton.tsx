@@ -28,7 +28,7 @@ export default function GlassButton({ children, blur = 8, sx, ...props }: Props)
         WebkitBackdropFilter: `blur(${blur}px)`,
 
         boxShadow: `
-          inset -80px 0 60px rgba(255,255,255,0.38)
+          inset -20px 0 30px rgba(255,255,255,0.28)
         `,
 
         textTransform: 'none',
@@ -43,7 +43,7 @@ export default function GlassButton({ children, blur = 8, sx, ...props }: Props)
           border: '1px solid rgba(255,255,255,0.65)',
 
           boxShadow: `
-            inset 80px 0 60px rgba(255,255,255,0.45)
+            inset 20px 0 50px rgba(255,255,255,0.45)
           `
         },
 

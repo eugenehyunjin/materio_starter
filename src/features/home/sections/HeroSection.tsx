@@ -1,140 +1,172 @@
 import { Box, Container, Typography } from '@mui/material'
 
-import FadeUp from '@/components/motion/FadeUp'
-import { notoSerifKr } from '@/styles/fonts'
+import { FadeUp, ScaleUpText } from '@/components/motion/index'
 
 export default function HeroSection() {
   return (
     <Box
       sx={{
-        position: 'relative',
-        height: '100vh',
-        overflow: 'hidden',
+        minHeight: '85vh',
         display: 'flex',
         alignItems: 'center',
-        color: '#fff',
-        backgroundColor: '#fff'
+        py: {
+          xs: 4,
+          md: 0
+        }
       }}
     >
-      {/* Background Video */}
-      <Box
-        component='video'
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload='auto'
-        poster='/images/home/section/hero_poster.jpg'
-        disablePictureInPicture
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          zIndex: 0
-        }}
-      >
-        <source src='/videos/main_visual.mp4' type='video/mp4' />
-      </Box>
-
-      {/* Dark Overlay */}
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.35))',
-          zIndex: 1
-        }}
-      />
-
-      {/* Content */}
       <Container
         maxWidth={false}
         sx={{
-          position: 'relative',
-          zIndex: 2,
-          height: '100%',
-          display: 'flex',
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-          maxWidth: '1300px'
+          maxWidth: '1800px'
         }}
       >
         <Box
           sx={{
-            maxWidth: 900,
-            mt: 'auto',
-            textAlign: 'right',
-            mb: 30
+            position: 'relative',
+            width: '100%',
+            height: {
+              xs: 500,
+              md: 750
+            },
+            borderRadius: '32px',
+            overflow: 'hidden',
+            boxShadow: '0 30px 80px rgba(0, 0, 0, 0.28)'
           }}
         >
-          <FadeUp>
-            <Typography
-              component='div'
-              sx={{
-                lineHeight: 1.3,
-                textAlign: 'right',
-                textShadow: '0 4px 20px rgba(0,0,0,0.35)'
-              }}
-            >
-              {/* 첫 번째 줄 */}
-              <Box
-                className={notoSerifKr.className}
-                component='div'
-                sx={{
-                  fontWeight: 500,
-                  letterSpacing: '-0.04em'
-                }}
-              >
-                <Box
-                  component='span'
-                  sx={{
-                    fontSize: {
-                      xs: '40px',
-                      md: '40px',
-                      lg: '48px'
-                    }
-                  }}
-                >
-                  비케이위너
-                </Box>
+          {/* Video */}
+          <Box
+            component='video'
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload='auto'
+            poster='/images/home/section/hero_poster.jpg'
+            disablePictureInPicture
+            sx={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover'
+            }}
+          >
+            <source src='/videos/main_visual.mp4' type='video/mp4' />
+          </Box>
 
-                <Box
-                  component='span'
-                  sx={{
-                    fontSize: {
-                      xs: '40px',
-                      md: '40px',
-                      lg: '40px'
-                    },
-                    ml: 0.5
-                  }}
-                >
-                  는
-                </Box>
-              </Box>
+          {/* Overlay */}
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 100%)'
+            }}
+          />
 
-              {/* 두 번째 줄 */}
-              <Box
-                className={notoSerifKr.className}
-                component='div'
+          {/* Text Card */}
+          <Box
+            sx={{
+              position: 'absolute',
+              right: {
+                xs: 20,
+                md: 50
+              },
+              top: '60%',
+              transform: 'translateY(-50%)',
+              maxWidth: {
+                xs: 'calc(100% - 40px)',
+                md: 600
+              },
+              p: {
+                xs: 3,
+                md: 5
+              }
+            }}
+          >
+            <FadeUp>
+              <Typography
                 sx={{
-                  fontWeight: 500,
+                  color: '#fff',
+                  fontWeight: 700,
+                  lineHeight: 1.4,
+                  letterSpacing: '-0.04em',
                   fontSize: {
-                    xs: '40px',
-                    md: '40px',
-                    lg: '40px'
-                  },
-                  mt: 1,
-                  letterSpacing: '-0.03em'
+                    xs: '28px',
+                    md: '38px',
+                    lg: '48px'
+                  }
                 }}
               >
-                더 나은 주거 문화를 생각합니다
-              </Box>
-            </Typography>
-          </FadeUp>
+                <ScaleUpText delay={0.5}>
+                  <Box
+                    component='span'
+                    sx={{
+                      color: '#6BE39B',
+                      fontSize: {
+                        xs: '28px',
+                        md: '38px',
+                        lg: '54px'
+                      }
+                    }}
+                  >
+                    사람
+                  </Box>
+                </ScaleUpText>
+                과{' '}
+                <ScaleUpText delay={0.7}>
+                  <Box
+                    component='span'
+                    sx={{
+                      color: '#6BE39B',
+                      fontSize: {
+                        xs: '28px',
+                        md: '38px',
+                        lg: '54px'
+                      }
+                    }}
+                  >
+                    공간
+                  </Box>
+                </ScaleUpText>
+                을 연결하는
+                <br />
+                공동주택 플랫폼 기업
+              </Typography>
+
+              <Typography
+                sx={{
+                  mt: 2,
+                  color: '#fff',
+                  fontWeight: 500,
+                  lineHeight: 1.5,
+                  letterSpacing: '-0.03em',
+                  fontSize: {
+                    xs: '20px',
+                    md: '28px',
+                    lg: '34px'
+                  }
+                }}
+              >
+                공동주택의{' '}
+                <ScaleUpText delay={0.9}>
+                  <Box
+                    component='span'
+                    sx={{
+                      color: '#6BE39B',
+                      fontWeight: 700,
+                      fontSize: {
+                        xs: '20px',
+                        md: '28px',
+                        lg: '40px'
+                      }
+                    }}
+                  >
+                    디지털 전환
+                  </Box>
+                </ScaleUpText>
+                을 만듭니다.
+              </Typography>
+            </FadeUp>
+          </Box>
         </Box>
       </Container>
     </Box>

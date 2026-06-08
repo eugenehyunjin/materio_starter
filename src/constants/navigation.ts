@@ -1,14 +1,14 @@
 export const PUBLIC_NAVIGATION = [
   {
-    label: 'ABOUT',
+    label: '회사소개',
     href: '/about'
   },
   {
-    label: 'APTREE',
+    label: '서비스 소개',
     href: '/aptree'
   },
   {
-    label: 'CONTACT',
+    label: '문의하기',
     href: '/contact'
   }
 ]

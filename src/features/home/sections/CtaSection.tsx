@@ -1,28 +1,86 @@
+'use client'
+
+import { useRef } from 'react'
+
+import Link from 'next/link'
+
 import { Box, Container, Stack, Typography } from '@mui/material'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 import GlassButton from '@/components/common/button/GlassButton'
-import { notoSerifKr } from '@/styles/fonts'
 import FadeUp from '@/components/motion/FadeUp'
 
 export default function CtaSection() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start']
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], [-50, 50])
+
   return (
     <Box
+      ref={sectionRef}
       sx={{
-        '& .MuiTypography-root': {
-          fontFamily: notoSerifKr.style.fontFamily
+        position: 'relative',
+        overflow: 'hidden',
+        py: {
+          xs: 12,
+          md: 20
         },
-        py: 18,
-        background: 'radial-gradient(81.67% 313.6% at 18.33% 30.8%, #111C1A 0%, #326742 100%)',
         color: '#fff'
       }}
     >
-      <Container maxWidth={false} sx={{ maxWidth: '1300px' }}>
+      {/* Background Parallax */}
+      <motion.div
+        style={{
+          y,
+          position: 'absolute',
+          inset: '-50px 0',
+          zIndex: 0
+        }}
+      >
+        <Box
+          sx={{
+            width: '100%',
+            height: '130%',
+
+            backgroundImage: "url('/images/home/section/cta_bg.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 20%',
+
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+      </motion.div>
+
+      {/* Overlay */}
+      <Box
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          background: 'rgba(0,0,0,0.08)',
+          zIndex: 1
+        }}
+      />
+
+      {/* Content */}
+      <Container
+        maxWidth={false}
+        sx={{
+          maxWidth: '1300px',
+          position: 'relative',
+          zIndex: 2
+        }}
+      >
         <FadeUp>
-          <Stack spacing={4} alignItems='flex-start'>
+          <Stack spacing={4} alignItems='center'>
             <Typography
               variant='h3'
               sx={{
-                fontWeight: 500,
+                fontWeight: 700,
                 lineHeight: 1.5,
                 fontSize: {
                   xs: '28px',
@@ -31,12 +89,39 @@ export default function CtaSection() {
                 }
               }}
             >
-              더 나은 주거 문화를 위해,
-              <br />
-              일상 가까이의 스마트 서비스를 만듭니다.
+              공동주택의{' '}
+              <Box component='span' sx={{ color: '#6BE39B' }}>
+                디지털 혁신
+              </Box>
+              을 시작하세요.
             </Typography>
 
-            <GlassButton sx={{ color: '#fff', width: 100 }}>Contact Us</GlassButton>
+            <Stack
+              direction={{
+                xs: 'column',
+                sm: 'row'
+              }}
+              spacing={2}
+            >
+              <Link
+                href='/contact'
+                style={{
+                  textDecoration: 'none'
+                }}
+              >
+                <GlassButton sx={{ color: '#fff' }}>문의하기</GlassButton>
+              </Link>
+              <Link
+                href='/files/bkwinner_introduction.pdf'
+                download
+                target='_blank'
+                style={{
+                  textDecoration: 'none'
+                }}
+              >
+                <GlassButton sx={{ color: '#fff' }}>서비스 소개서 다운로드</GlassButton>
+              </Link>
+            </Stack>
           </Stack>
         </FadeUp>
       </Container>
