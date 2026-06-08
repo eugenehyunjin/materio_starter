@@ -56,15 +56,26 @@ export default function PartnerSection() {
               textAlign: 'center',
               fontSize: {
                 xs: '34px',
-                md: '52px'
+                md: '64px'
               },
               fontWeight: 700,
               mb: 6
             }}
           >
-            비케이위너와 함께하는{' '}
             <Box component='span' sx={{ color: '#00A887' }}>
-              파트너
+              비케이위너
+            </Box>
+            와 함께{' '}
+            <Box
+              component='span'
+              sx={{
+                fontSize: {
+                  xs: '34px',
+                  md: '48px'
+                }
+              }}
+            >
+              성장하는 파트너
             </Box>
           </Typography>
         </FadeUp>
