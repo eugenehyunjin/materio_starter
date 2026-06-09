@@ -1,15 +1,14 @@
-import AppPreviewSection from '@/features/home/sections/AppPreviewSection'
-import CtaSection from '@/features/home/sections/CtaSection'
-import FeatureSection from '@/features/home/sections/FeatureSection'
-import ServiceSection from '@/features/home/sections/ServiceSection'
+import CompanyPage from '@/features/company/CompanyPage'
 
-export default function CompanyPage() {
+export const metadata = {
+  title: '회사소개',
+  description: '비케이위너 회사 소개'
+}
+
+export default function Page() {
   return (
     <>
-      <ServiceSection />
-      <FeatureSection />
-      <AppPreviewSection />
-      <CtaSection />
+      <CompanyPage></CompanyPage>
     </>
   )
 }

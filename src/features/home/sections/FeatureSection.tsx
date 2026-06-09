@@ -107,7 +107,7 @@ export default function FeatureShowcaseSection() {
               }}
             >
               공동 주택 생활의 <ScaleUpText delay={0.5}>모든 경험</ScaleUpText>을 플랫폼으로{' '}
-              <ScaleUpText delay={0.7}>연결</ScaleUpText> 합니다.
+              <ScaleUpText delay={0.7}>연결</ScaleUpText>합니다.
             </Typography>
             <Typography
               sx={{
