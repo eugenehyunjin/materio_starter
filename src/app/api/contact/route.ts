@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
     })
 
     await transporter.sendMail({
-      from: `"아파트리 홈페이지" <${process.env.SMTP_USER}>`,
+      from: `"비케이위너 홈페이지" <${process.env.SMTP_USER}>`,
       to: process.env.MAIL_TO,
       subject: `[비케이위너 홈페이지 문의] ${inquiryType}`,
 
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
             color:#00A887;
             font-size:24px;
           ">
-            아파트리 홈페이지 문의
+            비케이위너 홈페이지 문의
           </h2>
 
           <p style="
@@ -107,7 +107,7 @@ ${content}
             font-size:12px;
             color:#999;
           ">
-            본 메일은 아파트리 홈페이지 문의하기를 통해 자동 발송되었습니다.
+            본 메일은 비케이위너 홈페이지 문의하기를 통해 자동 발송되었습니다.
           </div>
         </div>
       `

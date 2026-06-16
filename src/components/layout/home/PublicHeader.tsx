@@ -11,6 +11,8 @@ import { PUBLIC_NAVIGATION } from '@/constants/navigation'
 
 const PublicHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   const pathname = usePathname()
 
   useEffect(() => {
@@ -27,16 +29,14 @@ const PublicHeader = () => {
 
   return (
     <header
-      className={`
-        fixed top-0 left-0 z-50 w-full
-        bg-white
-        transition-all duration-100
-      `}
+      className='fixed top-0 left-0 z-50 w-full bg-white transition-all duration-200'
       style={{
         boxShadow: isScrolled ? '0 8px 30px rgba(0,0,0,0.15)' : 'none'
       }}
     >
-      <div className='mx-auto flex h-20 items-center justify-between px-10 lg:px-10'>
+      {/* 헤더 영역 */}
+      <div className='mx-auto flex h-16 lg:h-20 items-center justify-between px-5 lg:px-10'>
+        {/* 로고 */}
         <Link href='/' className='flex items-center'>
           <Image
             src='/images/logo/bk_large_ko.svg'
@@ -44,10 +44,11 @@ const PublicHeader = () => {
             width={250}
             height={50}
             priority
-            className='h-auto w-[200px] lg:w-[200px]'
+            className='h-auto w-[140px] md:w-[180px] lg:w-[200px]'
           />
         </Link>
 
+        {/* PC 메뉴 */}
         <nav className='hidden items-center gap-10 lg:flex'>
           {PUBLIC_NAVIGATION.map(menu => {
             const isActive = pathname === menu.href
@@ -67,7 +68,43 @@ const PublicHeader = () => {
           })}
         </nav>
 
-        <button className='flex h-10 w-10 items-center justify-center text-black lg:hidden'>...</button>
+        {/* 모바일 햄버거 */}
+        <button
+          onClick={() => setMobileMenuOpen(prev => !prev)}
+          className='flex h-10 w-10 items-center justify-end text-2xl text-black lg:hidden bg-transparent'
+          aria-label='메뉴'
+        >
+          {mobileMenuOpen ? '✕' : '☰'}
+        </button>
+      </div>
+
+      {/* 모바일 메뉴 */}
+      <div
+        className={`
+          overflow-hidden transition-all duration-300 lg:hidden
+          ${mobileMenuOpen ? 'max-h-96 border-gray-200' : 'max-h-0'}
+        `}
+      >
+        <nav className='bg-white'>
+          {PUBLIC_NAVIGATION.map(menu => {
+            const isActive = pathname === menu.href
+
+            return (
+              <Link
+                key={menu.href}
+                href={menu.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`
+                  block border-b border-gray-100 px-6 py-4
+                  text-base font-semibold transition-all
+                  ${isActive ? 'bg-green-50 text-green-600' : 'text-black hover:bg-gray-50'}
+                `}
+              >
+                {menu.label}
+              </Link>
+            )
+          })}
+        </nav>
       </div>
     </header>
   )

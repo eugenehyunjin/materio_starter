@@ -53,25 +53,59 @@ export default function PublicFooter() {
     <Box
       component='footer'
       sx={{
-        bgcolor: '#F5F5F5',
+        width: '100%',
         py: 8,
-        borderTop: '1px solid #EAEAEA'
+
+        px: {
+          xs: 3,
+          md: 12
+        }
       }}
     >
       <Box
-        component='footer'
         sx={{
-          width: '100%',
-          py: 2,
-          px: 12
+          display: 'flex',
+
+          flexDirection: {
+            xs: 'column',
+            md: 'row'
+          },
+
+          justifyContent: 'space-between',
+
+          alignItems: {
+            xs: 'center',
+            md: 'flex-start'
+          },
+
+          gap: {
+            xs: 5,
+            md: 8
+          }
         }}
       >
         <Box
           sx={{
             display: 'flex',
+
+            flexDirection: {
+              xs: 'column',
+              md: 'row'
+            },
+
             justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            gap: 8
+
+            alignItems: {
+              xs: 'center',
+              md: 'flex-start'
+            },
+
+            gap: {
+              xs: 5,
+              md: 8
+            },
+
+            width: '100%'
           }}
         >
           {/* 좌측 로고 */}
@@ -85,13 +119,37 @@ export default function PublicFooter() {
               <Image src='/images/logo/logo_gray.png' alt='BK Winner' width={170} height={31} />
             </Box>
           </Link>
+
           {/* 중앙 메뉴 + 회사정보 */}
-          <Box sx={{ flex: 1 }}>
+          <Box
+            sx={{
+              flex: 1,
+              width: {
+                xs: '100%',
+                md: 'auto'
+              }
+            }}
+          >
             <Box
               sx={{
                 display: 'flex',
-                gap: 10,
-                mb: 4
+
+                flexDirection: {
+                  xs: 'column',
+                  md: 'row'
+                },
+
+                gap: {
+                  xs: 4,
+                  md: 10
+                },
+
+                mb: 4,
+
+                textAlign: {
+                  xs: 'center',
+                  md: 'left'
+                }
               }}
             >
               <Stack spacing={1}>
@@ -153,7 +211,15 @@ export default function PublicFooter() {
                   sx={{
                     display: 'flex',
                     gap: 4,
-                    mb: 2
+                    mb: 2,
+                    textAlign: {
+                      xs: 'center',
+                      md: 'left'
+                    },
+                    justifyContent: {
+                      xs: 'center',
+                      md: 'left'
+                    }
                   }}
                 >
                   <Link
@@ -195,7 +261,12 @@ export default function PublicFooter() {
                   sx={{
                     fontSize: '14px',
                     color: '#111',
-                    lineHeight: 1.8
+                    lineHeight: 1.8,
+
+                    textAlign: {
+                      xs: 'left',
+                      md: 'left'
+                    }
                   }}
                 >
                   대표 : 권두영
@@ -210,7 +281,12 @@ export default function PublicFooter() {
                   sx={{
                     mt: 3,
                     fontSize: '15px',
-                    color: '#000'
+                    color: '#000',
+
+                    textAlign: {
+                      xs: 'center',
+                      md: 'left'
+                    }
                   }}
                 >
                   Copyright (c) 2026 BK Winner All rights. reserved
@@ -220,10 +296,19 @@ export default function PublicFooter() {
           </Box>
           <Box
             sx={{
-              minWidth: 260,
+              minWidth: {
+                xs: '100%',
+                md: 260
+              },
+
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'flex-end',
+
+              alignItems: {
+                xs: 'center',
+                md: 'flex-end'
+              },
+
               gap: 3
             }}
           >
@@ -315,7 +400,15 @@ export default function PublicFooter() {
             <FormControl
               size='small'
               sx={{
-                width: '30%',
+                width: {
+                  xs: '100%',
+                  md: '30%'
+                },
+
+                maxWidth: {
+                  xs: 320,
+                  md: 'none'
+                },
                 mt: 1,
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '10px',

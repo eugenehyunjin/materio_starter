@@ -11,8 +11,34 @@ import '@/app/globals.css'
 import '@assets/iconify-icons/generated-icons.css'
 
 export const metadata = {
-  title: 'Master Next.js Framework Independent ',
-  description: 'Master Next.js Framework Independent'
+  metadataBase: new URL('https://bkwinner.co.kr'),
+
+  title: '비케이위너 홈페이지',
+  description: '공동주택 DX 플랫폼 전문 기업',
+
+  openGraph: {
+    title: '비케이위너',
+    description: '공동주택 DX 플랫폼 전문 기업',
+    url: 'https://bkwinner.co.kr',
+    siteName: '비케이위너',
+    locale: 'ko_KR',
+    type: 'website',
+    images: [
+      {
+        url: '/images/og/bkwinner-og.png',
+        width: 1200,
+        height: 630,
+        alt: '비케이위너'
+      }
+    ]
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: '비케이위너',
+    description: '공동주택 DX 플랫폼 전문 기업',
+    images: ['/images/og/bkwinner-og.png']
+  }
 }
 
 const RootLayout = ({ children }: ChildrenType) => {
