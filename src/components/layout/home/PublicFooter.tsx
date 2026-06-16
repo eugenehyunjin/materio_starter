@@ -1,8 +1,10 @@
+import { useState } from 'react'
+
 import Image from 'next/image'
 
 import Link from 'next/link'
 
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography, Select, MenuItem, FormControl } from '@mui/material'
 
 const footerLinkStyle = {
   cursor: 'pointer',
@@ -45,6 +47,8 @@ const awards = [
 ]
 
 export default function PublicFooter() {
+  const [familySite, setFamilySite] = useState('')
+
   return (
     <Box
       component='footer'
@@ -307,29 +311,54 @@ export default function PublicFooter() {
               ))}
             </Box>
 
-            {/* 앱 로고 */}
-            <Link
-              href='https://aptree.co.kr'
-              target='_blank'
-              style={{
-                textDecoration: 'none'
+            {/* 패밀리 사이트 */}
+            <FormControl
+              size='small'
+              sx={{
+                width: '30%',
+                mt: 1,
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: '10px',
+                  fontSize: '13px',
+
+                  '& fieldset': {
+                    borderColor: '#ddd'
+                  },
+
+                  '&:hover fieldset': {
+                    borderColor: '#00A887'
+                  },
+
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#00A887'
+                  }
+                },
+
+                '& label.Mui-focused': {
+                  color: '#00A887'
+                }
               }}
             >
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
+              <Select
+                displayEmpty
+                value={familySite}
+                onChange={e => {
+                  const value = e.target.value
 
-                  transition: 'all .3s ease',
+                  if (!value) return
 
-                  '&:hover': {
-                    transform: 'scale(1.08)'
-                  }
+                  window.open(value, '_blank', 'noopener,noreferrer')
+                  setFamilySite('')
                 }}
               >
-                <Image src='/images/logo/aptree_logo_kr.png' alt='APTREE' width={90} height={90} />
-              </Box>
-            </Link>
+                <MenuItem value='' disabled>
+                  패밀리 사이트
+                </MenuItem>
+
+                <MenuItem value='https://aptree.co.kr'>아파트리</MenuItem>
+                <MenuItem value='https://bkwinner.co.kr'>BK Winner</MenuItem>
+              </Select>
+            </FormControl>
           </Box>
         </Box>
       </Box>

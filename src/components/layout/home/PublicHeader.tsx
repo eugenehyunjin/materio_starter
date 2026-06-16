@@ -5,10 +5,13 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { usePathname } from 'next/navigation'
+
 import { PUBLIC_NAVIGATION } from '@/constants/navigation'
 
 const PublicHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,15 +49,22 @@ const PublicHeader = () => {
         </Link>
 
         <nav className='hidden items-center gap-10 lg:flex'>
-          {PUBLIC_NAVIGATION.map(menu => (
-            <Link
-              key={menu.href}
-              href={menu.href}
-              className='text-lg font-bold tracking-wide text-black transition-colors duration-200 hover:text-green-600'
-            >
-              {menu.label}
-            </Link>
-          ))}
+          {PUBLIC_NAVIGATION.map(menu => {
+            const isActive = pathname === menu.href
+
+            return (
+              <Link
+                key={menu.href}
+                href={menu.href}
+                className={`
+                  text-lg font-bold tracking-wide transition-all duration-200
+                  ${isActive ? 'text-green-600' : 'text-black hover:text-green-600'}
+                `}
+              >
+                {menu.label}
+              </Link>
+            )
+          })}
         </nav>
 
         <button className='flex h-10 w-10 items-center justify-center text-black lg:hidden'>...</button>

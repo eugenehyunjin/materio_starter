@@ -6,12 +6,16 @@ export default function HeroSection() {
   return (
     <Box
       sx={{
-        minHeight: '85vh',
+        minHeight: {
+          xs: '700px',
+          md: '1050px'
+        },
+
         display: 'flex',
         alignItems: 'center',
         py: {
           xs: 4,
-          md: 0
+          md: 5
         }
       }}
     >

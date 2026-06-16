@@ -18,11 +18,11 @@ const histories = [
         title: '홈닷 ERP 추가 예정'
       },
       {
-        month: '05',
+        month: '5월',
         title: '관리사무소 앱 리뉴얼 런칭'
       },
       {
-        month: '01',
+        month: '1월',
         title: '입주자 앱 리뉴얼 런칭'
       }
     ]
@@ -32,17 +32,17 @@ const histories = [
     year: '2025',
     events: [
       {
-        month: '09',
+        month: '9월',
         title: '25년 기술평가 우수기업 인증서 T-5',
         description: '한국기술신용평가'
       },
       {
-        month: '07',
+        month: '7월',
         title: '기업부설연구소 인정',
         description: '한국산업기술진흥협회 KOITA'
       },
       {
-        month: '01',
+        month: '1월',
         title: '에스노텍스 런칭'
       }
     ]
@@ -52,12 +52,12 @@ const histories = [
     year: '2024',
     events: [
       {
-        month: '12',
+        month: '12월',
         title: '연구개발전담부서 인정',
         description: '한국산업기술진흥협회 KOITA'
       },
       {
-        month: '05',
+        month: '5월',
         title: '한국환경공단 업무 제휴',
         description: 'E-순환거버넌스'
       }
@@ -67,16 +67,16 @@ const histories = [
     year: '2023',
     events: [
       {
-        month: '12',
+        month: '12월',
         title: '벤처기업확인서',
         description: '혁신성장유형'
       },
       {
-        month: '04',
+        month: '4월',
         title: '대한민국 우수기업 대상 우수플랫폼 대상 2년 연속 수상'
       },
       {
-        month: '02',
+        month: '2월',
         title: '기업부설 연구소 설립',
         description: '한국산업기술진흥협회 KOITA'
       }
@@ -86,17 +86,17 @@ const histories = [
     year: '2022',
     events: [
       {
-        month: '10',
+        month: '10월',
         title: '혁신스타트업 기업 선정',
         description: '신용보증기금'
       },
       {
-        month: '09',
+        month: '9월',
         title: '22년 기술평가 우수기업 인증서 T-4(우수)',
         description: '한국인터넷진흥원'
       },
       {
-        month: '07',
+        month: '7월',
         title: '블록체인 민감분야 확산 사업 선정',
         description: '한국인터넷진흥원'
       }
@@ -106,12 +106,12 @@ const histories = [
     year: '2021',
     events: [
       {
-        month: '06',
+        month: '6월',
         title: '블록체인 특구연계사업 선정',
         description: '한국인터넷 진흥원'
       },
       {
-        month: '05',
+        month: '5월',
         title: '아파트 통함 관리 플랫폼 개발 - 아파트리'
       }
     ]
@@ -120,7 +120,7 @@ const histories = [
     year: '2020',
     events: [
       {
-        month: '09',
+        month: '9월',
         title: '블록체인을 활용한 개인정보 보호 시스템 특허 등록',
         description: '특허번호: 10-2163274'
       }
@@ -130,7 +130,7 @@ const histories = [
     year: '2019',
     events: [
       {
-        month: '04',
+        month: '4월',
         title: '비케이위너 주식회사 설립'
       }
     ]
