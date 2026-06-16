@@ -20,6 +20,7 @@ export default function AptreeProblemSection() {
   const problemScale = useTransform(scrollYProgress, [0.05, 0.3], [1, 0.7])
 
   const messageOpacity = useTransform(scrollYProgress, [0.22, 0.3, 0.6], [0, 1, 1])
+  const HEADER_HEIGHT = 80
 
   return (
     <Box
@@ -31,9 +32,9 @@ export default function AptreeProblemSection() {
       <Box
         sx={{
           position: 'sticky',
-          top: 0,
+          top: `${HEADER_HEIGHT}px`,
 
-          height: '100vh',
+          height: `calc(100vh - ${HEADER_HEIGHT}px)`,
 
           overflow: 'hidden',
 
@@ -66,7 +67,11 @@ export default function AptreeProblemSection() {
         <Container
           maxWidth={false}
           sx={{
-            maxWidth: '1600px',
+            maxWidth: {
+              xs: '600px',
+              sm: '900px',
+              md: '1000px'
+            },
             position: 'relative',
             zIndex: 1
           }}
@@ -82,7 +87,8 @@ export default function AptreeProblemSection() {
               sx={{
                 textAlign: 'center',
                 fontSize: {
-                  xs: '42px',
+                  xs: '32px',
+                  sm: '40px',
                   md: '64px'
                 },
                 fontWeight: 800,
@@ -98,9 +104,19 @@ export default function AptreeProblemSection() {
               sx={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(2,1fr)',
-                gap: 4,
 
-                maxWidth: '1100px',
+                gap: {
+                  xs: 1.5,
+                  md: 3,
+                  lg: 4
+                },
+
+                maxWidth: {
+                  xs: '700px',
+                  md: '900px',
+                  lg: '1100px'
+                },
+
                 mx: 'auto'
               }}
             >
