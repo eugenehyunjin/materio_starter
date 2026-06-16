@@ -25,7 +25,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/og/bkwinner-og.png',
+        url: '/images/og/bkwinner_og.png',
         width: 1200,
         height: 630,
         alt: '비케이위너'
@@ -37,7 +37,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: '비케이위너',
     description: '공동주택 DX 플랫폼 전문 기업',
-    images: ['/images/og/bkwinner-og.png']
+    images: ['/images/og/bkwinner_og.png']
   }
 }
 
