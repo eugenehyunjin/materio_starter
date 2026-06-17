@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, useTheme, useMediaQuery } from '@mui/material'
 
 const items = [
   {
@@ -24,6 +24,10 @@ const items = [
 ]
 
 export default function ContactCategorySection({ value, onChange }: any) {
+  const theme = useTheme()
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
   return (
     <Box
       sx={{
@@ -87,7 +91,7 @@ export default function ContactCategorySection({ value, onChange }: any) {
               width={120}
               height={120}
               style={{
-                width: window.innerWidth < 900 ? '80px' : '120px',
+                width: isMobile ? '80px' : '120px',
                 height: 'auto'
               }}
             />
