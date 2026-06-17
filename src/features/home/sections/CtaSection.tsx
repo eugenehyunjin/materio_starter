@@ -86,22 +86,35 @@ export default function CtaSection() {
                   xs: '28px',
                   md: '36px',
                   lg: '40px'
-                }
+                },
+                textAlign: 'center'
               }}
             >
               공동주택의{' '}
-              <Box component='span' sx={{ color: '#6BE39B' }}>
-                디지털 혁신
+              <Box
+                component='span'
+                sx={{
+                  display: {
+                    xs: 'block',
+                    md: 'inline'
+                  }
+                }}
+              >
+                <Box component='span' sx={{ color: '#6BE39B' }}>
+                  디지털 혁신
+                </Box>
+                을 시작하세요.
               </Box>
-              을 시작하세요.
             </Typography>
 
             <Stack
-              direction={{
-                xs: 'column',
-                sm: 'row'
+              direction='row'
+              spacing={{
+                xs: 1,
+                md: 2
               }}
-              spacing={2}
+              justifyContent='center'
+              flexWrap='nowrap'
             >
               <Link
                 href='/contact'

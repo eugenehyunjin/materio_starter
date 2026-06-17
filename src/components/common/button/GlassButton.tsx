@@ -15,7 +15,7 @@ export default function GlassButton({ children, blur = 8, sx, ...props }: Props)
       variant='outlined'
       {...props}
       sx={{
-        minWidth: 150,
+        minWidth: { xs: 105, md: 150 },
         maxWidth: 250,
         height: 44,
         px: 3,

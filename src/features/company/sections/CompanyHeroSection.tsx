@@ -10,8 +10,8 @@ export default function CompanyHeroSection() {
     <Box
       sx={{
         position: 'relative',
-        overflow: 'hidden',
-
+        overflow: { md: 'hidden' },
+        mb: { xs: 5, md: 1 },
         pt: {
           xs: 15,
           md: 25
@@ -41,8 +41,8 @@ export default function CompanyHeroSection() {
       >
         <Box
           sx={{
-            width: '480px',
-            height: '480px',
+            width: { xs: '70px', md: '480px' },
+            height: { xs: '70px', md: '480px' },
 
             borderRadius: '50%',
 
@@ -77,8 +77,8 @@ export default function CompanyHeroSection() {
       >
         <Box
           sx={{
-            width: '420px',
-            height: '420px',
+            width: { xs: '50px', md: '480px' },
+            height: { xs: '50px', md: '480px' },
 
             borderRadius: '50%',
 
@@ -136,7 +136,7 @@ export default function CompanyHeroSection() {
               zIndex: 1,
 
               fontSize: {
-                xs: '44px',
+                xs: '40px',
                 md: '72px'
               },
 
@@ -153,7 +153,7 @@ export default function CompanyHeroSection() {
         <Typography
           sx={{
             fontSize: {
-              xs: '24px',
+              xs: '22px',
               md: '32px'
             },
             lineHeight: 1.9,
@@ -201,17 +201,31 @@ export default function CompanyHeroSection() {
       >
         <Box
           sx={{
-            mt: 6,
+            mt: {
+              xs: 4,
+              md: 6
+            },
+
             position: 'relative',
-            minHeight: '640px'
+
+            minHeight: {
+              xs: 'auto',
+              md: '640px'
+            }
           }}
         >
           {/* Left Image */}
           <Box
             sx={{
-              position: 'absolute',
+              position: {
+                xs: 'relative',
+                md: 'absolute'
+              },
               left: 0,
-              top: 0
+              top: {
+                xs: -20,
+                md: 0
+              }
             }}
           >
             <motion.div
@@ -236,14 +250,39 @@ export default function CompanyHeroSection() {
                 top: 0
               }}
             >
-              <Image src='/images/company/sangseang_bg.png' alt='상생' width={840} height={640} />
+              <Box
+                sx={{
+                  position: 'relative',
+
+                  width: {
+                    xs: 300,
+                    md: 840
+                  },
+
+                  aspectRatio: '840 / 640',
+
+                  mx: 'auto'
+                }}
+              >
+                <Image
+                  src='/images/company/sangseang_bg.png'
+                  alt='상생'
+                  fill
+                  style={{
+                    objectFit: 'contain'
+                  }}
+                />
+              </Box>
             </motion.div>
           </Box>
 
           {/* Center Text */}
           <Box
             sx={{
-              position: 'absolute',
+              position: {
+                xs: 'relative',
+                md: 'absolute'
+              },
               inset: 0,
 
               display: 'flex',
@@ -270,9 +309,14 @@ export default function CompanyHeroSection() {
               <Typography
                 sx={{
                   textAlign: 'center',
+                  mt: {
+                    xs: 15,
+                    md: 0
+                  },
 
                   fontSize: {
-                    xs: '44px',
+                    xs: '28px',
+                    sm: '34px',
                     md: '64px'
                   },
 

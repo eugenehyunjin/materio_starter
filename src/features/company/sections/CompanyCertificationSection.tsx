@@ -31,6 +31,10 @@ const certificates = [
 
 const CARD_WIDTH = 350
 const CARD_HEIGHT = 510
+
+const MOBILE_CARD_WIDTH = 290
+const MOBILE_CARD_HEIGHT = 410
+
 const GAP = 50
 const STEP = CARD_WIDTH + GAP
 
@@ -49,7 +53,7 @@ export default function CompanyCertificationSection() {
     <Box
       sx={{
         position: 'relative',
-        py: 24,
+        py: { xs: 15, md: 24 },
         overflow: 'hidden'
       }}
     >
@@ -93,7 +97,7 @@ export default function CompanyCertificationSection() {
           <Typography
             sx={{
               fontSize: {
-                xs: '38px',
+                xs: '26px',
                 md: '52px'
               },
 
@@ -101,15 +105,15 @@ export default function CompanyCertificationSection() {
               mb: 3
             }}
           >
-            지속적인 연구와 기술 개발의 성과
+            지속적인 연구와{' '}
+            <Box component='span' sx={{ display: { xs: 'block', md: 'inline' } }}>
+              기술 개발의 성과
+            </Box>
           </Typography>
 
           <Typography
             sx={{
-              fontSize: {
-                xs: '18px',
-                md: '24px'
-              },
+              fontSize: { xs: '20px', md: '24px' },
 
               color: '#111',
 
@@ -120,8 +124,9 @@ export default function CompanyCertificationSection() {
             }}
           >
             비케이위너는 공동주택 생활 플랫폼 분야의
-            <br />
-            지속적인 연구개발과 기술 혁신을 통해 차별화된 경쟁력을 확보하고 있습니다.
+            <Box component='span' sx={{ display: { xs: 'inline', md: 'block' } }}>
+              지속적인 연구개발과 기술 혁신을 통해 차별화된 경쟁력을 확보하고 있습니다.
+            </Box>
           </Typography>
         </Box>
       </Container>
@@ -130,7 +135,7 @@ export default function CompanyCertificationSection() {
       <Box
         sx={{
           position: 'relative',
-          height: '700px'
+          height: { xs: '500px', md: '700px' }
         }}
       >
         {certificates.map((image, index) => {
@@ -167,8 +172,8 @@ export default function CompanyCertificationSection() {
 
                 transform: 'translate(-50%, -50%)',
 
-                width: CARD_WIDTH,
-                height: CARD_HEIGHT
+                width: { xs: MOBILE_CARD_WIDTH, md: CARD_WIDTH },
+                height: { xs: MOBILE_CARD_HEIGHT, md: CARD_HEIGHT }
               }}
             >
               <motion.img

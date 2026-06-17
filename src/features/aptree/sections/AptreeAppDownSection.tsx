@@ -3,7 +3,7 @@
 import Image from 'next/image'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Box, Button, Container, Typography } from '@mui/material'
+import { Box, Button, Container, Typography, useTheme, useMediaQuery } from '@mui/material'
 
 import { FaApple } from 'react-icons/fa'
 import { IoLogoGooglePlaystore } from 'react-icons/io5'
@@ -42,6 +42,17 @@ const mockups = [
 ]
 
 export default function AptreeAppDownSection() {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
+  if (isMobile) {
+    return <MobileAppDownloadSection />
+  }
+
+  return <DesktopAppDownloadSection />
+}
+
+function DesktopAppDownloadSection() {
   const { scrollYProgress } = useScroll()
 
   return (
@@ -194,6 +205,39 @@ export default function AptreeAppDownSection() {
           </Container>
         </motion.div>
       </Box>
+    </Box>
+  )
+}
+
+function MobileAppDownloadSection() {
+  return (
+    <Box
+      sx={{
+        py: 8,
+        background: 'linear-gradient(180deg, #FFFFFF 0%, rgba(205,240,225,.9) 70%, #FFFFFF 100%)'
+      }}
+    >
+      <Container maxWidth='sm'>
+        <MobileAppCard
+          icon='/images/aptree/down/user_app.png'
+          title='아파트리'
+          subtitle='사용자의 편의를 추구하는'
+          mockup='/images/aptree/down/user_app_mo.png'
+          iosUrl='https://apps.apple.com/kr/app/%EC%95%84%ED%8C%8C%ED%8A%B8%EB%A6%AC/id1510705927'
+          androidUrl='https://play.google.com/store/apps/details?id=kr.co.apatree.app'
+        />
+
+        <Box sx={{ height: 8 }} />
+
+        <MobileAppCard
+          icon='/images/aptree/down/manager_app.jpg'
+          title='아파트리 관리소'
+          subtitle='효율적인 관리로 더 쉬워진'
+          mockup='/images/aptree/down/manager_app_mo.png'
+          iosUrl='https://apps.apple.com/kr/app/아파트리-관리소/id1521404914'
+          androidUrl='https://play.google.com/store/apps/details?id=kr.co.apatree.manager'
+        />
+      </Container>
     </Box>
   )
 }
@@ -419,6 +463,151 @@ function AppDownloadCard({
             </Box>
           </Button>
         </Box>
+      </Box>
+    </Box>
+  )
+}
+
+function MobileAppCard({
+  icon,
+  title,
+  subtitle,
+  mockup,
+  iosUrl,
+  androidUrl
+}: {
+  icon: string
+  title: string
+  subtitle: string
+  mockup: string
+  iosUrl: string
+  androidUrl: string
+}) {
+  return (
+    <Box
+      sx={{
+        textAlign: 'center',
+        pt: 0,
+        pb: 6
+      }}
+    >
+      {/* 앱 아이콘 */}
+      <Image
+        src={icon}
+        alt={title}
+        width={120}
+        height={120}
+        style={{
+          borderRadius: '24px'
+        }}
+      />
+
+      {/* 서브카피 */}
+      <Typography
+        sx={{
+          mt: 2,
+          color: '#00A887',
+          fontWeight: 700,
+          fontSize: '18px'
+        }}
+      >
+        {subtitle}
+      </Typography>
+
+      {/* 앱명 */}
+      <Typography
+        sx={{
+          fontSize: '44px',
+          fontWeight: 800,
+          lineHeight: 1.2,
+          mb: 4
+        }}
+      >
+        {title}
+      </Typography>
+
+      {/* 목업 */}
+      <Image
+        src={mockup}
+        alt={title}
+        width={500}
+        height={900}
+        style={{
+          width: '100%',
+          maxWidth: '340px',
+          height: 'auto'
+        }}
+      />
+
+      {/* 다운로드 버튼 */}
+      <Box
+        sx={{
+          mt: 4,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2
+        }}
+      >
+        <Button
+          component='a'
+          href={androidUrl}
+          target='_black'
+          fullWidth
+          startIcon={<IoLogoGooglePlaystore size={22} />}
+          sx={{
+            py: 1.6,
+            px: 1.6,
+            borderRadius: '14px',
+
+            background: '#fff',
+
+            color: '#111',
+
+            border: '1px solid #ddd',
+
+            fontWeight: 700,
+            transition: 'all .3s ease',
+
+            justifyContent: 'center',
+            '&:hover': {
+              background: '#fafafa',
+              transform: 'translateY(-1px)',
+              boxShadow: '0 7px 20px rgba(0,0,0,.18)'
+            }
+          }}
+        >
+          Google Play 다운로드
+        </Button>
+
+        <Button
+          component='a'
+          href={iosUrl}
+          target='_black'
+          fullWidth
+          startIcon={<FaApple size={22} />}
+          sx={{
+            py: 1.6,
+            px: 1.6,
+            borderRadius: '14px',
+
+            background: 'rgba(0,0,0,.38)',
+            color: '#fff',
+
+            fontWeight: 700,
+
+            justifyContent: 'center',
+            transition: 'all .3s ease',
+            textAlign: 'center',
+
+            '&:hover': {
+              background: 'rgba(0,0,0,.58)',
+              transform: 'translateY(-1px)',
+              boxShadow: '0 7px 20px rgba(0,0,0,.18)'
+            }
+          }}
+        >
+          App Store 다운로드
+        </Button>
       </Box>
     </Box>
   )

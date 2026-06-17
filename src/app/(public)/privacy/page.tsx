@@ -9,11 +9,15 @@ export default function PrivacyPage() {
       }}
     >
       <Typography
-        variant='h3'
         sx={{
           fontWeight: 800,
           mb: 8,
-          textAlign: 'center'
+          textAlign: 'center',
+          fontSize: {
+            xs: '40px',
+            md: '50px',
+            lg: '64px'
+          }
         }}
       >
         개인정보처리방침

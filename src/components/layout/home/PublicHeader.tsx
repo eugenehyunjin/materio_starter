@@ -27,6 +27,19 @@ const PublicHeader = () => {
     }
   }, [])
 
+  // 모바일 메뉴 활성화 시 스크롤 중지
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
+
   return (
     <header
       className='fixed top-0 left-0 z-50 w-full bg-white transition-all duration-200'
@@ -82,7 +95,7 @@ const PublicHeader = () => {
       <div
         className={`
           overflow-hidden transition-all duration-300 lg:hidden
-          ${mobileMenuOpen ? 'max-h-96 border-gray-200' : 'max-h-0'}
+          ${mobileMenuOpen ? 'max-h-screen border-gray-200' : 'max-h-0'}
         `}
       >
         <nav className='bg-white'>

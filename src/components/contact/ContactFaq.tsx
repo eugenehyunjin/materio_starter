@@ -156,7 +156,7 @@ export default function ContactFaq() {
             >
               <Typography
                 sx={{
-                  fontSize: '22px',
+                  fontSize: { xs: '17px', md: '22px' },
                   fontWeight: 700
                 }}
               >
@@ -176,7 +176,7 @@ export default function ContactFaq() {
                 sx={{
                   lineHeight: 1.5,
                   color: '#111',
-                  fontSize: '18px',
+                  fontSize: { xs: '16px', md: '18px' },
                   fontWeight: 600
                 }}
               >

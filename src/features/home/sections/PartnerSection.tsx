@@ -45,7 +45,10 @@ export default function PartnerSection() {
   return (
     <Box
       sx={{
-        py: 20,
+        py: {
+          xs: 8,
+          md: 20
+        },
         overflow: 'hidden'
       }}
     >
@@ -55,11 +58,15 @@ export default function PartnerSection() {
             sx={{
               textAlign: 'center',
               fontSize: {
-                xs: '34px',
-                md: '64px'
+                xs: '26px',
+                sm: '30px',
+                md: '52px'
               },
               fontWeight: 700,
-              mb: 6
+              mb: {
+                xs: 3,
+                md: 6
+              }
             }}
           >
             <Box component='span' sx={{ color: '#00A887' }}>
@@ -69,9 +76,14 @@ export default function PartnerSection() {
             <Box
               component='span'
               sx={{
+                display: {
+                  xs: 'block',
+                  md: 'inline'
+                },
                 fontSize: {
-                  xs: '34px',
-                  md: '48px'
+                  xs: '26px',
+                  sm: '30px',
+                  md: '52px'
                 }
               }}
             >
@@ -81,11 +93,11 @@ export default function PartnerSection() {
         </FadeUp>
         <MarqueeRow reverse={false} logos={logos1} />
 
-        <Box sx={{ height: 20 }} />
+        <Box sx={{ height: { xs: 1, md: 20 } }} />
 
         <MarqueeRow reverse logos={logos2} />
 
-        <Box sx={{ height: 20 }} />
+        <Box sx={{ height: { xs: 1, md: 20 } }} />
 
         <MarqueeRow reverse={false} logos={logos3} />
       </Container>

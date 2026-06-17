@@ -2,7 +2,18 @@
 
 import { useState } from 'react'
 
-import { Box, Button, MenuItem, TextField, Snackbar, Alert, Checkbox, FormControlLabel } from '@mui/material'
+import {
+  Box,
+  Button,
+  MenuItem,
+  TextField,
+  Snackbar,
+  Alert,
+  Checkbox,
+  FormControlLabel,
+  useTheme,
+  useMediaQuery
+} from '@mui/material'
 
 export default function ContactForm({ inquiryType }: { inquiryType: string }) {
   const [loading, setLoading] = useState(false)
@@ -21,6 +32,8 @@ export default function ContactForm({ inquiryType }: { inquiryType: string }) {
   const [content, setContent] = useState('')
 
   const phone = `${phone1}-${phone2}-${phone3}`
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   // ✅ Snackbar 상태
   const [snack, setSnack] = useState<{
@@ -193,8 +206,29 @@ export default function ContactForm({ inquiryType }: { inquiryType: string }) {
         sx={{ mb: 3, ...textFieldSx }}
       />
 
-      <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
-        <TextField select value={phone1} onChange={e => setPhone1(e.target.value)} sx={{ width: 120, ...textFieldSx }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: {
+            xs: 'column',
+            sm: 'row'
+          },
+          gap: 2,
+          mb: 3
+        }}
+      >
+        <TextField
+          select
+          value={phone1}
+          onChange={e => setPhone1(e.target.value)}
+          sx={{
+            width: {
+              xs: '100%',
+              sm: 120
+            },
+            ...textFieldSx
+          }}
+        >
           <MenuItem value='010'>010</MenuItem>
           <MenuItem value='011'>011</MenuItem>
           <MenuItem value='016'>016</MenuItem>
@@ -229,7 +263,21 @@ export default function ContactForm({ inquiryType }: { inquiryType: string }) {
         />
       </Box>
 
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: {
+            xs: 'column',
+            sm: 'row'
+          },
+          alignItems: {
+            xs: 'stretch',
+            sm: 'center'
+          },
+          gap: 2,
+          mb: 3
+        }}
+      >
         <TextField
           label={
             <span>
@@ -242,13 +290,30 @@ export default function ContactForm({ inquiryType }: { inquiryType: string }) {
           sx={{ flex: 1, ...textFieldSx }}
         />
 
-        <Box sx={{ fontWeight: 500, fontSize: '25px' }}>@</Box>
+        <Box
+          sx={{
+            display: {
+              xs: 'none',
+              sm: 'block'
+            },
+            fontWeight: 500,
+            fontSize: '25px'
+          }}
+        >
+          @
+        </Box>
 
         <TextField
           select
           value={emailDomain}
           onChange={e => setEmailDomain(e.target.value)}
-          sx={{ width: 220, ...textFieldSx }}
+          sx={{
+            width: {
+              xs: '100%',
+              sm: 220
+            },
+            ...textFieldSx
+          }}
         >
           <MenuItem value='gmail.com'>gmail.com</MenuItem>
           <MenuItem value='naver.com'>naver.com</MenuItem>
@@ -278,7 +343,7 @@ export default function ContactForm({ inquiryType }: { inquiryType: string }) {
 
       <TextField
         multiline
-        rows={6}
+        rows={isMobile ? 4 : 6}
         fullWidth
         label={
           <span>
@@ -301,7 +366,10 @@ export default function ContactForm({ inquiryType }: { inquiryType: string }) {
 
         <Box
           sx={{
-            fontSize: 13,
+            fontSize: {
+              xs: 12,
+              md: 13
+            },
             lineHeight: 1.6,
             p: 2,
             border: '1px solid #eee',
@@ -343,13 +411,29 @@ export default function ContactForm({ inquiryType }: { inquiryType: string }) {
         onClick={handleSubmit}
         disabled={loading || !agreeTerms}
         sx={{
-          minWidth: 160,
-          height: 52,
+          width: {
+            xs: '100%',
+            sm: 'auto'
+          },
+
+          minWidth: {
+            xs: '100%',
+            sm: 160
+          },
+
+          height: {
+            xs: 54,
+            md: 52
+          },
+
+          fontSize: {
+            xs: '18px',
+            md: '20px'
+          },
           borderRadius: '14px',
           borderColor: '#00A887',
           color: '#00A887',
           fontWeight: 700,
-          fontSize: '20px',
           textTransform: 'none',
           '&:hover': {
             borderColor: '#00A887',

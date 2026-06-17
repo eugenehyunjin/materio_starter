@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import { Box, Dialog, DialogContent, IconButton, Typography } from '@mui/material'
+import { Box, Dialog, DialogContent, IconButton, Typography, useTheme, useMediaQuery } from '@mui/material'
 
 import ContactForm from './ContactForm'
 
@@ -20,15 +20,20 @@ const inquiryIcons: Record<string, string> = {
 }
 
 export default function ContactDialog({ open, onClose, inquiryType }: Props) {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
   return (
     <Dialog
       open={open}
       onClose={onClose}
+      fullScreen={isMobile}
       maxWidth='md'
       fullWidth
+      scroll='paper'
       PaperProps={{
         sx: {
-          borderRadius: '32px',
+          borderRadius: isMobile ? 0 : '32px',
           overflow: 'hidden',
           boxShadow: '0 30px 80px rgba(0,0,0,.18)'
         }
@@ -37,8 +42,14 @@ export default function ContactDialog({ open, onClose, inquiryType }: Props) {
       <Box
         sx={{
           position: 'relative',
-          py: 3,
-          px: 3,
+          py: {
+            xs: 2,
+            md: 3
+          },
+          px: {
+            xs: 2,
+            md: 3
+          },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -58,13 +69,21 @@ export default function ContactDialog({ open, onClose, inquiryType }: Props) {
           ✕
         </IconButton>
 
-        <Image src={inquiryIcons[inquiryType]} alt={inquiryType} width={72} height={72} />
+        <Image
+          src={inquiryIcons[inquiryType]}
+          alt={inquiryType}
+          width={isMobile ? 52 : 72}
+          height={isMobile ? 52 : 72}
+        />
 
         <Typography
           sx={{
-            mt: 2,
+            mt: { xs: 1, d: 2 },
 
-            fontSize: '32px',
+            fontSize: {
+              xs: '22px',
+              md: '32px'
+            },
 
             fontWeight: 800,
 
@@ -77,7 +96,10 @@ export default function ContactDialog({ open, onClose, inquiryType }: Props) {
 
       <DialogContent
         sx={{
-          p: 5
+          p: {
+            xs: 2,
+            md: 5
+          }
         }}
       >
         <ContactForm inquiryType={inquiryType} />

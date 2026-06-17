@@ -32,7 +32,7 @@ export default function ContactPage() {
             textAlign: 'center',
             fontWeight: 800,
             fontSize: {
-              xs: '42px',
+              xs: '35px',
               md: '72px'
             },
             mb: 8

@@ -141,7 +141,7 @@ export default function CompanyHistorySection() {
   return (
     <Box
       sx={{
-        py: 24,
+        py: { xs: 15, md: 24 },
         background: 'linear-gradient(180deg, #FFFFFF 0%, #FFFFCF 90%, #FFFFFF 100%)'
       }}
     >
@@ -154,24 +154,55 @@ export default function CompanyHistorySection() {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: 12
+
+            gridTemplateColumns: {
+              xs: '1fr',
+              md: '1fr 1fr'
+            },
+
+            gap: {
+              xs: 6,
+              md: 12
+            }
           }}
         >
           {/* LEFT */}
           <Box>
             <Box
               sx={{
-                position: 'sticky',
-                top: 140
+                position: {
+                  xs: 'static',
+                  md: 'sticky'
+                },
+
+                top: {
+                  md: 140
+                }
               }}
             >
               <Box
                 sx={{
                   display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: 1,
-                  mb: 4
+
+                  flexDirection: {
+                    xs: 'column',
+                    md: 'row'
+                  },
+
+                  alignItems: {
+                    xs: 'center',
+                    md: 'flex-start'
+                  },
+
+                  textAlign: {
+                    xs: 'center',
+                    md: 'left'
+                  },
+
+                  gap: {
+                    xs: 2,
+                    md: 1
+                  }
                 }}
               >
                 <Image
@@ -179,15 +210,18 @@ export default function CompanyHistorySection() {
                   alt='BKWINNER'
                   width={350}
                   height={50}
-                  priority
-                  className='h-auto w-[350px] lg:w-[350px]'
+                  style={{
+                    width: '100%',
+                    maxWidth: '250px',
+                    height: 'auto'
+                  }}
                 />
 
                 <Typography
                   component='span'
                   sx={{
                     fontSize: {
-                      xs: '42px',
+                      xs: '26px',
                       md: '48px'
                     },
                     fontWeight: 500,
@@ -200,16 +234,18 @@ export default function CompanyHistorySection() {
               </Box>
               <Typography
                 sx={{
-                  fontSize: '24px',
+                  fontSize: { xs: '20px', md: '24px' },
                   color: '#111',
-                  lineHeight: 1.8,
+                  lineHeight: 1.5,
                   maxWidth: 600,
-                  mt: 4
+                  mt: { xs: 2, md: 4 },
+                  textAlign: { xs: 'center', md: 'left' }
                 }}
               >
                 공동 주택 관리 서비스의 전문성과 안정성을 높이기 위해
-                <br />
-                끊임없는 기술 개발과 연구를 이어가고 있습니다.
+                <Box component='span' sx={{ display: { xs: 'inline', md: 'block' } }}>
+                  끊임없는 기술 개발과 연구를 이어가고 있습니다.
+                </Box>
               </Typography>
             </Box>
           </Box>
@@ -218,15 +254,26 @@ export default function CompanyHistorySection() {
           <Box
             sx={{
               position: 'relative',
-              pl: 10,
+
+              pl: {
+                xs: 5,
+                md: 10
+              },
 
               '&::before': {
                 content: '""',
                 position: 'absolute',
-                left: '12px',
+
+                left: {
+                  xs: '6px',
+                  md: '12px'
+                },
+
                 top: 0,
                 bottom: 0,
+
                 width: '1px',
+
                 background: '#ccc'
               }
             }}
@@ -254,7 +301,7 @@ export default function CompanyHistorySection() {
                 <Box
                   sx={{
                     position: 'relative',
-                    mb: 18,
+                    mb: { xs: 10, md: 18 },
 
                     '&:hover .year': {
                       color: '#00A88A'
@@ -270,7 +317,10 @@ export default function CompanyHistorySection() {
                   <Box
                     sx={{
                       position: 'absolute',
-                      left: '-72px',
+                      left: {
+                        xs: '-38px',
+                        md: '-72px'
+                      },
                       top: '17px',
 
                       width: '10px',
@@ -302,7 +352,10 @@ export default function CompanyHistorySection() {
                   <Typography
                     className='year'
                     sx={{
-                      fontSize: '42px',
+                      fontSize: {
+                        xs: '32px',
+                        md: '42px'
+                      },
                       fontWeight: 400,
                       letterSpacing: '-0.08em',
                       lineHeight: 1,
@@ -343,8 +396,11 @@ export default function CompanyHistorySection() {
                         {/* Month */}
                         <Typography
                           sx={{
-                            minWidth: '60px',
-                            fontSize: '24px',
+                            minWidth: {
+                              xs: '45px',
+                              md: '60px'
+                            },
+                            fontSize: { xs: '16px', md: '24px' },
                             fontWeight: 600,
 
                             color: '#111',
@@ -360,7 +416,10 @@ export default function CompanyHistorySection() {
                           <Typography
                             className='event-title'
                             sx={{
-                              fontSize: '20px',
+                              fontSize: {
+                                xs: '16px',
+                                md: '24px'
+                              },
                               fontWeight: 400,
                               color: '#111',
 
@@ -375,7 +434,10 @@ export default function CompanyHistorySection() {
                           {event.description && (
                             <Typography
                               sx={{
-                                fontSize: '20px',
+                                fontSize: {
+                                  xs: '14px',
+                                  md: '20px'
+                                },
                                 color: '#111'
                               }}
                             >

@@ -44,8 +44,11 @@ export default function ServiceSection() {
       sx={{
         position: 'relative',
         py: {
-          xs: 15,
+          xs: 5,
           md: 15
+        },
+        pb: {
+          xs: 15
         }
       }}
     >
@@ -68,7 +71,8 @@ export default function ServiceSection() {
             <Typography
               sx={{
                 fontSize: {
-                  xs: '34px',
+                  xs: '26px',
+                  sm: '30px',
                   md: '52px'
                 },
                 fontWeight: 700,
@@ -76,10 +80,19 @@ export default function ServiceSection() {
                 lineHeight: 1.4
               }}
             >
-              소비자의 <ScaleUpText delay={0.5}>생각</ScaleUpText>과 <ScaleUpText delay={0.7}>행동</ScaleUpText>
-              을 연구분석하여
-              <br />
-              소비자 중심의 <ScaleUpText delay={0.9}>공동주택 생활 환경</ScaleUpText>을 만들어 갑니다.
+              소비자의 <ScaleUpText delay={0.5}>생각</ScaleUpText>과 <ScaleUpText delay={0.7}>행동</ScaleUpText>을
+              연구분석하여{' '}
+              <Box
+                component='span'
+                sx={{
+                  display: {
+                    xs: 'inline',
+                    md: 'block'
+                  }
+                }}
+              >
+                소비자 중심의 <ScaleUpText delay={0.9}>공동주택 생활 환경</ScaleUpText>을 만들어 갑니다.
+              </Box>
             </Typography>
           </FadeUp>
         </Box>
@@ -87,10 +100,35 @@ export default function ServiceSection() {
         {/* Floating Cards */}
         <Box
           sx={{
-            position: 'relative',
+            position: {
+              xs: 'static',
+              md: 'relative'
+            },
+
             width: '100%',
             maxWidth: '1300px',
-            height: '1000px',
+
+            height: {
+              xs: 'auto',
+              md: '1000px'
+            },
+
+            display: {
+              xs: 'grid',
+              md: 'block'
+            },
+
+            gridTemplateColumns: {
+              xs: '1fr',
+              sm: 'repeat(2,1fr)',
+              md: 'none'
+            },
+
+            gap: {
+              xs: 3,
+              sm: 4
+            },
+
             mx: 'auto'
           }}
         >
@@ -98,11 +136,43 @@ export default function ServiceSection() {
             <FadeUp key={card.image}>
               <Box
                 sx={{
-                  position: 'absolute',
-                  width: 385,
-                  height: 385,
+                  position: {
+                    xs: 'relative',
+                    md: 'absolute'
+                  },
 
-                  ...positions[index],
+                  width: {
+                    xs: '100%',
+                    md: 385
+                  },
+
+                  aspectRatio: {
+                    xs: '1 / 1',
+                    md: 'auto'
+                  },
+
+                  height: {
+                    md: 385
+                  },
+
+                  ...{
+                    top: {
+                      xs: 'auto',
+                      md: positions[index].top
+                    },
+                    left: {
+                      xs: 'auto',
+                      md: positions[index].left
+                    },
+                    right: {
+                      xs: 'auto',
+                      md: positions[index].right
+                    },
+                    transform: {
+                      xs: 'none',
+                      md: positions[index].transform
+                    }
+                  },
 
                   borderRadius: '28px',
                   overflow: 'hidden',

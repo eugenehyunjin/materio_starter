@@ -7,10 +7,10 @@ export default function HeroSection() {
     <Box
       sx={{
         minHeight: {
-          xs: '700px',
+          xs: '580px',
+          sm: '650px',
           md: '1050px'
         },
-
         display: 'flex',
         alignItems: 'center',
         py: {
@@ -30,10 +30,14 @@ export default function HeroSection() {
             position: 'relative',
             width: '100%',
             height: {
-              xs: 500,
+              xs: 420,
+              sm: 500,
               md: 750
             },
-            borderRadius: '32px',
+            borderRadius: {
+              xs: '20px',
+              md: '32px'
+            },
             overflow: 'hidden',
             boxShadow: '0 30px 80px rgba(0, 0, 0, 0.28)'
           }}
@@ -74,14 +78,17 @@ export default function HeroSection() {
                 xs: 20,
                 md: 50
               },
-              top: '60%',
+              top: {
+                xs: '52%',
+                md: '60%'
+              },
               transform: 'translateY(-50%)',
               maxWidth: {
                 xs: 'calc(100% - 40px)',
                 md: 600
               },
               p: {
-                xs: 3,
+                xs: 1,
                 md: 5
               }
             }}

@@ -35,6 +35,8 @@ const featureImages = [
 
 const CARD_WIDTH = 277
 const CARD_HEIGHT = 600
+const MOBILE_CARD_WIDTH = 180
+const MOBILE_CARD_HEIGHT = 390
 const GAP = 20
 const STEP = CARD_WIDTH + GAP
 
@@ -53,7 +55,10 @@ export default function FeatureShowcaseSection() {
     <Box
       sx={{
         position: 'relative',
-        height: '1100px',
+        height: {
+          xs: '850px',
+          md: '1100px'
+        },
         overflow: 'hidden'
       }}
     >
@@ -66,8 +71,15 @@ export default function FeatureShowcaseSection() {
 
           transform: 'translate(-50%, -50%)',
 
-          width: '1500px',
-          height: '700px',
+          width: {
+            xs: '600px',
+            md: '1500px'
+          },
+
+          height: {
+            xs: '300px',
+            md: '700px'
+          },
 
           borderRadius: '50%',
 
@@ -91,14 +103,18 @@ export default function FeatureShowcaseSection() {
         <Box
           sx={{
             textAlign: 'center',
-            mb: 20
+            mb: {
+              xs: 6,
+              md: 20
+            }
           }}
         >
           <FadeUp>
             <Typography
               sx={{
                 fontSize: {
-                  xs: '34px',
+                  xs: '26px',
+                  sm: '30px',
                   md: '52px'
                 },
                 fontWeight: 700,
@@ -111,13 +127,17 @@ export default function FeatureShowcaseSection() {
             </Typography>
             <Typography
               sx={{
+                mt: {
+                  xs: 2
+                },
                 fontSize: {
-                  xs: '34px',
+                  xs: '18px',
+                  sm: '20px',
                   md: '36px'
                 },
                 fontWeight: 500,
                 color: '#111',
-                lineHeight: 1.4
+                lineHeight: 1.5
               }}
             >
               비케이위너의 스마트 플랫폼은 입주민과 관리사무소 모두에게 새로운 경험을 제공합니다.
@@ -172,8 +192,15 @@ export default function FeatureShowcaseSection() {
 
                 transform: 'translate(-50%, -50%)',
 
-                width: `${CARD_WIDTH}px`,
-                height: `${CARD_HEIGHT}px`
+                width: {
+                  xs: `${MOBILE_CARD_WIDTH}px`,
+                  md: `${CARD_WIDTH}px`
+                },
+
+                height: {
+                  xs: `${MOBILE_CARD_HEIGHT}px`,
+                  md: `${CARD_HEIGHT}px`
+                }
               }}
             >
               <motion.img
@@ -217,8 +244,15 @@ export default function FeatureShowcaseSection() {
 
             transform: 'translate(-50%, -50%)',
 
-            width: `${CARD_WIDTH}px`,
-            height: `${CARD_HEIGHT}px`,
+            width: {
+              xs: `${MOBILE_CARD_WIDTH}px`,
+              md: `${CARD_WIDTH}px`
+            },
+
+            height: {
+              xs: `${MOBILE_CARD_HEIGHT}px`,
+              md: `${CARD_HEIGHT}px`
+            },
 
             backgroundColor: '#fff',
 
@@ -241,7 +275,7 @@ export default function FeatureShowcaseSection() {
             transform: 'translate(-50%, -50%)',
 
             height: {
-              xs: '560px',
+              xs: '404px',
               md: '618px'
             },
 

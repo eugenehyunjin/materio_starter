@@ -28,9 +28,21 @@ export default function ContactCategorySection({ value, onChange }: any) {
     <Box
       sx={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(4,1fr)',
-        gap: 3,
-        mb: 8
+
+        gridTemplateColumns: {
+          xs: 'repeat(2,1fr)',
+          md: 'repeat(4,1fr)'
+        },
+
+        gap: {
+          xs: 2,
+          md: 3
+        },
+
+        mb: {
+          xs: 4,
+          md: 8
+        }
       }}
     >
       {items.map(item => (
@@ -44,7 +56,10 @@ export default function ContactCategorySection({ value, onChange }: any) {
 
             borderRadius: '24px',
 
-            p: 4,
+            p: {
+              xs: 2,
+              md: 4
+            },
 
             textAlign: 'center',
 
@@ -60,13 +75,33 @@ export default function ContactCategorySection({ value, onChange }: any) {
             }
           }}
         >
-          <Image src={item.icon} alt='' width={120} height={120} />
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center'
+            }}
+          >
+            <Image
+              src={item.icon}
+              alt=''
+              width={120}
+              height={120}
+              style={{
+                width: window.innerWidth < 900 ? '80px' : '120px',
+                height: 'auto'
+              }}
+            />
+          </Box>
 
           <Typography
             sx={{
               mt: 2,
               fontWeight: 700,
-              fontSize: 22
+              fontSize: {
+                xs: '16px',
+                sm: '18px',
+                md: '22px'
+              }
             }}
           >
             {item.value}

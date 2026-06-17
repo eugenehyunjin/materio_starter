@@ -3,16 +3,14 @@
 import Image from 'next/image'
 
 import { motion } from 'framer-motion'
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Container, Typography, useMediaQuery, useTheme } from '@mui/material'
 
 const solutions = [
   {
     title: '전자투표 · 설문조사',
     icon: '/images/aptree/vote.png',
     image: '/images/aptree/mockup_vote.png',
-
     reverse: false,
-
     descriptions: [
       {
         text: '스마트폰만 있으면 ',
@@ -33,9 +31,7 @@ const solutions = [
     title: '관리사무소 문의',
     icon: '/images/aptree/civil.png',
     image: '/images/aptree/mockup_civil.png',
-
     reverse: true,
-
     descriptions: [
       {
         text: '입주민은 스마트폰에서 ',
@@ -60,9 +56,7 @@ const solutions = [
     title: '방문차량 예약',
     icon: '/images/aptree/car.png',
     image: '/images/aptree/mockup_car.png',
-
     reverse: false,
-
     descriptions: [
       {
         text: '관리사무소 방문 없이 ',
@@ -83,9 +77,7 @@ const solutions = [
     title: '관리비 조회',
     icon: '/images/aptree/bill.png',
     image: '/images/aptree/mockup_bill.png',
-
     reverse: true,
-
     descriptions: [
       {
         text: '관리비 조회는 기본, 카카오 페이로 ',
@@ -107,7 +99,10 @@ export default function AptreeSolutionSection() {
   return (
     <Box
       sx={{
-        py: 10,
+        py: {
+          xs: 0,
+          md: 10
+        },
         background: '#fff'
       }}
     >
@@ -126,6 +121,98 @@ export default function AptreeSolutionSection() {
 }
 
 function SolutionBlock({ solution }: { solution: any }) {
+  const theme = useTheme()
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
+  if (isMobile) {
+    return <MobileSolutionBlock solution={solution} />
+  }
+
+  return <DesktopSolutionBlock solution={solution} />
+}
+
+function MobileSolutionBlock({ solution }: { solution: any }) {
+  return (
+    <Box
+      sx={{
+        py: 4,
+        textAlign: 'center'
+      }}
+    >
+      {/* 아이콘 */}
+      <Box
+        component='img'
+        src={solution.icon}
+        alt=''
+        sx={{
+          width: 90,
+          height: 'auto',
+          mx: 'auto'
+        }}
+      />
+
+      {/* 제목 */}
+      <Typography
+        sx={{
+          mt: 0,
+          mb: 2,
+
+          color: '#00A887',
+
+          fontWeight: 700,
+
+          fontSize: {
+            xs: '26px',
+            sm: '30px'
+          }
+        }}
+      >
+        {solution.title}
+      </Typography>
+
+      {/* 목업 */}
+      <Image
+        src={solution.image}
+        alt={solution.title}
+        width={611}
+        height={700}
+        style={{
+          width: '100%',
+          maxWidth: '300px',
+          height: 'auto'
+        }}
+      />
+
+      {/* 설명 */}
+      <Box sx={{ mt: 2 }}>
+        {solution.descriptions.map((item: any) => (
+          <Typography
+            key={item.bold}
+            sx={{
+              mb: 2,
+              fontSize: '16px',
+              lineHeight: 1.3
+            }}
+          >
+            {item.text}
+
+            <Box
+              component='span'
+              sx={{
+                fontWeight: 800
+              }}
+            >
+              {item.bold}
+            </Box>
+          </Typography>
+        ))}
+      </Box>
+    </Box>
+  )
+}
+
+function DesktopSolutionBlock({ solution }: { solution: any }) {
   return (
     <Box
       sx={{
@@ -138,8 +225,7 @@ function SolutionBlock({ solution }: { solution: any }) {
         alignItems: 'center'
       }}
     >
-      {/* Mockup */}
-
+      {/* 목업 */}
       <motion.div
         initial={{
           opacity: 0,
@@ -166,12 +252,21 @@ function SolutionBlock({ solution }: { solution: any }) {
             justifyContent: 'center'
           }}
         >
-          <Image src={solution.image} alt={solution.title} width={611} height={700} />
+          <Image
+            src={solution.image}
+            alt={solution.title}
+            width={611}
+            height={700}
+            style={{
+              width: '100%',
+              maxWidth: '611px',
+              height: 'auto'
+            }}
+          />
         </Box>
       </motion.div>
 
-      {/* Text */}
-
+      {/* 텍스트 */}
       <motion.div
         initial={{
           opacity: 0,
@@ -214,27 +309,22 @@ function SolutionBlock({ solution }: { solution: any }) {
 
               fontWeight: 700,
 
-              fontSize: {
-                xs: '36px',
-                md: '42px'
-              }
+              fontSize: '42px'
             }}
           >
             {solution.title}
           </Typography>
 
-          {solution.descriptions.map((item: { bold: string; text: string }) => (
+          {solution.descriptions.map((item: any) => (
             <Typography
               key={item.bold}
               sx={{
                 mb: 2,
-                fontSize: {
-                  xs: '18px',
-                  md: '25px'
-                }
+                fontSize: '25px'
               }}
             >
               {item.text}
+
               <Box
                 component='span'
                 sx={{

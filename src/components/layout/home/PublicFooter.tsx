@@ -54,7 +54,10 @@ export default function PublicFooter() {
       component='footer'
       sx={{
         width: '100%',
-        py: 8,
+        py: {
+          xs: 5,
+          md: 8
+        },
 
         px: {
           xs: 3,
@@ -115,7 +118,14 @@ export default function PublicFooter() {
               textDecoration: 'none'
             }}
           >
-            <Box sx={{ minWidth: 180 }}>
+            <Box
+              sx={{
+                width: {
+                  xs: 140,
+                  md: 170
+                }
+              }}
+            >
               <Image src='/images/logo/logo_gray.png' alt='BK Winner' width={170} height={31} />
             </Box>
           </Link>
@@ -152,7 +162,18 @@ export default function PublicFooter() {
                 }
               }}
             >
-              <Stack spacing={1}>
+              <Stack
+                direction={{
+                  xs: 'row',
+                  md: 'column'
+                }}
+                spacing={{
+                  xs: 3,
+                  md: 1
+                }}
+                justifyContent='center'
+                alignItems='center'
+              >
                 <Link
                   href='/about'
                   style={{
@@ -262,25 +283,48 @@ export default function PublicFooter() {
                     fontSize: '14px',
                     color: '#111',
                     lineHeight: 1.8,
-
                     textAlign: {
-                      xs: 'left',
+                      xs: 'center',
                       md: 'left'
                     }
                   }}
                 >
                   대표 : 권두영
                   <br />
-                  주소 : 부산 남구 전포대로 133 14층 117호(문현동, 위워크BIFC)
+                  주소 : 부산 남구 전포대로 133 14층 117호 (문현동, 위워크BIFC)
                   <br />
-                  Tel : 051-911-0120 &nbsp;&nbsp;&nbsp; Fax : 051-955-2066 &nbsp;&nbsp;&nbsp; E-mail :
-                  contact@bkwinner.co.kr
+                  Tel : 051-911-0120
+                  <Box
+                    component='span'
+                    sx={{
+                      display: {
+                        xs: 'block',
+                        md: 'inline'
+                      }
+                    }}
+                  >
+                    Fax : 051-955-2066
+                  </Box>
+                  <Box
+                    component='span'
+                    sx={{
+                      display: {
+                        xs: 'block',
+                        md: 'inline'
+                      }
+                    }}
+                  >
+                    E-mail : contact@bkwinner.co.kr
+                  </Box>
                 </Typography>
 
                 <Typography
                   sx={{
                     mt: 3,
-                    fontSize: '15px',
+                    fontSize: {
+                      xs: '12px',
+                      md: '15px'
+                    },
                     color: '#000',
 
                     textAlign: {
@@ -326,7 +370,10 @@ export default function PublicFooter() {
                 <Box
                   key={index}
                   sx={{
-                    width: 110,
+                    width: {
+                      xs: 90,
+                      md: 110
+                    },
 
                     display: 'flex',
                     flexDirection: 'column',
@@ -360,7 +407,10 @@ export default function PublicFooter() {
                   {/* 년도 */}
                   <Typography
                     sx={{
-                      fontSize: '12px',
+                      fontSize: {
+                        xs: '10px',
+                        md: '12px'
+                      },
                       fontWeight: 700,
                       lineHeight: 1.2
                     }}
@@ -371,7 +421,10 @@ export default function PublicFooter() {
                   {/* 메인 텍스트 */}
                   <Typography
                     sx={{
-                      fontSize: '12px',
+                      fontSize: {
+                        xs: '10px',
+                        md: '12px'
+                      },
                       fontWeight: 500,
                       color: '#111',
                       lineHeight: 1.3,
@@ -384,7 +437,10 @@ export default function PublicFooter() {
                   {/* 부가 텍스트 */}
                   <Typography
                     sx={{
-                      fontSize: '11px',
+                      fontSize: {
+                        xs: '9px',
+                        md: '10px'
+                      },
                       color: '#777',
                       lineHeight: 1.3,
                       mt: 0.3

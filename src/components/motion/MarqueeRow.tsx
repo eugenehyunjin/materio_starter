@@ -42,10 +42,19 @@ export default function MarqueeRow({ reverse = false, logos }: MarqueeRowProps) 
           <Box
             key={index}
             sx={{
-              width: 220,
-              height: 100,
+              width: {
+                xs: 110,
+                md: 220
+              },
+              height: {
+                xs: 80,
+                md: 100
+              },
 
-              mx: 5,
+              mx: {
+                xs: 2,
+                md: 5
+              },
 
               display: 'flex',
               alignItems: 'center',
@@ -58,7 +67,10 @@ export default function MarqueeRow({ reverse = false, logos }: MarqueeRowProps) 
               alt='partner'
               sx={{
                 maxWidth: '100%',
-                maxHeight: 60,
+                maxHeight: {
+                  xs: 40,
+                  md: 60
+                },
                 objectFit: 'contain',
                 transition: 'all .3s ease',
 

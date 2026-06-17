@@ -3,7 +3,7 @@
 import Image from 'next/image'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Container, Typography, useMediaQuery, useTheme } from '@mui/material'
 
 const problems = [
   { image: '/images/aptree/problem_vote.png' },
@@ -13,6 +13,18 @@ const problems = [
 ]
 
 export default function AptreeProblemSection() {
+  const theme = useTheme()
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
+  if (isMobile) {
+    return <MobileProblemSection />
+  }
+
+  return <DesktopProblemSection />
+}
+
+function DesktopProblemSection() {
   const { scrollYProgress } = useScroll()
 
   const problemOpacity = useTransform(scrollYProgress, [0.05, 0.3, 0.6], [1, 0, 0])
@@ -20,6 +32,7 @@ export default function AptreeProblemSection() {
   const problemScale = useTransform(scrollYProgress, [0.05, 0.3], [1, 0.7])
 
   const messageOpacity = useTransform(scrollYProgress, [0.22, 0.3, 0.6], [0, 1, 1])
+
   const HEADER_HEIGHT = 80
 
   return (
@@ -33,22 +46,17 @@ export default function AptreeProblemSection() {
         sx={{
           position: 'sticky',
           top: `${HEADER_HEIGHT}px`,
-
           height: `calc(100vh - ${HEADER_HEIGHT}px)`,
-
           overflow: 'hidden',
-
           display: 'flex',
           alignItems: 'center'
         }}
       >
-        {/* Glow */}
         <Box
           sx={{
             position: 'absolute',
             left: '50%',
             top: '50%',
-
             transform: 'translate(-50%, -50%)',
 
             width: '1300px',
@@ -67,16 +75,11 @@ export default function AptreeProblemSection() {
         <Container
           maxWidth={false}
           sx={{
-            maxWidth: {
-              xs: '600px',
-              sm: '900px',
-              md: '1000px'
-            },
+            maxWidth: '1100px',
             position: 'relative',
             zIndex: 1
           }}
         >
-          {/* STEP 1 : 문제점 */}
           <motion.div
             style={{
               opacity: problemOpacity,
@@ -86,11 +89,7 @@ export default function AptreeProblemSection() {
             <Typography
               sx={{
                 textAlign: 'center',
-                fontSize: {
-                  xs: '32px',
-                  sm: '40px',
-                  md: '64px'
-                },
+                fontSize: '64px',
                 fontWeight: 800,
                 mb: 10
               }}
@@ -104,29 +103,22 @@ export default function AptreeProblemSection() {
               sx={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(2,1fr)',
-
-                gap: {
-                  xs: 1.5,
-                  md: 3,
-                  lg: 4
-                },
-
-                maxWidth: {
-                  xs: '700px',
-                  md: '900px',
-                  lg: '1100px'
-                },
-
+                gap: 4,
+                maxWidth: '1100px',
                 mx: 'auto'
               }}
             >
               {problems.map((problem, index) => (
-                <ProblemCard key={problem.image} problem={problem} index={index} scrollYProgress={scrollYProgress} />
+                <ProblemCardDesktop
+                  key={problem.image}
+                  problem={problem}
+                  index={index}
+                  scrollYProgress={scrollYProgress}
+                />
               ))}
             </Box>
           </motion.div>
 
-          {/* STEP 2 : 해결합니다 */}
           <motion.div
             style={{
               opacity: messageOpacity
@@ -145,26 +137,15 @@ export default function AptreeProblemSection() {
               <Typography
                 sx={{
                   textAlign: 'center',
-
                   fontWeight: 800,
-
                   lineHeight: 1.3,
-
-                  fontSize: {
-                    xs: '56px',
-                    md: '92px'
-                  }
+                  fontSize: '92px'
                 }}
               >
                 비케이위너는
                 <br />
                 이렇게{' '}
-                <Box
-                  component='span'
-                  sx={{
-                    color: '#00A887'
-                  }}
-                >
+                <Box component='span' sx={{ color: '#00A887' }}>
                   해결합니다.
                 </Box>
               </Typography>
@@ -176,7 +157,86 @@ export default function AptreeProblemSection() {
   )
 }
 
-function ProblemCard({
+function MobileProblemSection() {
+  return (
+    <Box
+      sx={{
+        py: 10
+      }}
+    >
+      <Container maxWidth='sm'>
+        <Typography
+          sx={{
+            textAlign: 'center',
+            fontSize: '26px',
+            fontWeight: 800,
+            lineHeight: 1.4,
+            mb: 6
+          }}
+        >
+          아직도 이런 방식으로
+          <br />
+          공동주택을 관리하시나요?
+        </Typography>
+
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 3
+          }}
+        >
+          {problems.map(problem => (
+            <Box
+              key={problem.image}
+              sx={{
+                overflow: 'hidden',
+                borderRadius: '20px',
+                boxShadow: '0 15px 40px rgba(0,0,0,.12)'
+              }}
+            >
+              <Image
+                src={problem.image}
+                alt=''
+                width={700}
+                height={500}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block'
+                }}
+              />
+            </Box>
+          ))}
+        </Box>
+
+        <Typography
+          sx={{
+            mt: 8,
+            textAlign: 'center',
+            fontSize: '34px',
+            fontWeight: 800,
+            lineHeight: 1.4
+          }}
+        >
+          비케이위너는
+          <br />
+          이렇게{' '}
+          <Box
+            component='span'
+            sx={{
+              color: '#00A887'
+            }}
+          >
+            해결합니다.
+          </Box>
+        </Typography>
+      </Container>
+    </Box>
+  )
+}
+
+function ProblemCardDesktop({
   problem,
   index,
   scrollYProgress
@@ -188,6 +248,7 @@ function ProblemCard({
   scrollYProgress: any
 }) {
   const start = 0.08 + index * 0.04
+
   const end = 0.32 + index * 0.04
 
   const opacity = useTransform(scrollYProgress, [start, end], [1, 0])
@@ -203,12 +264,9 @@ function ProblemCard({
     >
       <Box
         sx={{
-          position: 'relative',
           overflow: 'hidden',
           borderRadius: '32px',
-
           filter: 'grayscale(100%)',
-
           boxShadow: '0 25px 60px rgba(0,0,0,.12)'
         }}
       >
