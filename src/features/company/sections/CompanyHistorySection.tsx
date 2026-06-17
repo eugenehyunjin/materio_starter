@@ -212,7 +212,7 @@ export default function CompanyHistorySection() {
                   height={50}
                   style={{
                     width: '100%',
-                    maxWidth: '250px',
+                    maxWidth: '280px',
                     height: 'auto'
                   }}
                 />
@@ -239,7 +239,7 @@ export default function CompanyHistorySection() {
                   lineHeight: 1.5,
                   maxWidth: 600,
                   mt: { xs: 2, md: 4 },
-                  textAlign: { xs: 'center', md: 'left' }
+                  textAlign: { xs: 'left', md: 'left' }
                 }}
               >
                 공동 주택 관리 서비스의 전문성과 안정성을 높이기 위해

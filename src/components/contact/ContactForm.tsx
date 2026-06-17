@@ -12,7 +12,8 @@ import {
   Checkbox,
   FormControlLabel,
   useTheme,
-  useMediaQuery
+  useMediaQuery,
+  Typography
 } from '@mui/material'
 
 export default function ContactForm({ inquiryType }: { inquiryType: string }) {
@@ -205,139 +206,176 @@ export default function ContactForm({ inquiryType }: { inquiryType: string }) {
         onChange={e => setCompany(e.target.value)}
         sx={{ mb: 3, ...textFieldSx }}
       />
-
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: {
-            xs: 'column',
-            sm: 'row'
-          },
-          gap: 2,
-          mb: 3
+          mb: 3,
+          p: 2,
+          border: '1px solid #00A887',
+          borderRadius: '16px'
         }}
       >
-        <TextField
-          select
-          value={phone1}
-          onChange={e => setPhone1(e.target.value)}
+        <Typography
           sx={{
-            width: {
-              xs: '100%',
-              sm: 120
-            },
-            ...textFieldSx
+            mb: 2,
+            fontWeight: 700,
+            fontSize: 15,
+            color: '#111'
           }}
         >
-          <MenuItem value='010'>010</MenuItem>
-          <MenuItem value='011'>011</MenuItem>
-          <MenuItem value='016'>016</MenuItem>
-          <MenuItem value='017'>017</MenuItem>
-          <MenuItem value='018'>018</MenuItem>
-          <MenuItem value='019'>019</MenuItem>
-          <MenuItem value='070'>070</MenuItem>
-        </TextField>
-
-        <TextField
-          value={phone2}
-          label={
-            <span>
-              전화번호 앞자리 <span style={{ color: 'red' }}>*</span>
-            </span>
-          }
-          inputProps={{ maxLength: 4 }}
-          onChange={e => setPhone2(e.target.value.replace(/[^0-9]/g, ''))}
-          sx={{ flex: 1, ...textFieldSx }}
-        />
-
-        <TextField
-          value={phone3}
-          label={
-            <span>
-              전화번호 뒷자리<span style={{ color: 'red' }}>*</span>
-            </span>
-          }
-          inputProps={{ maxLength: 4 }}
-          onChange={e => setPhone3(e.target.value.replace(/[^0-9]/g, ''))}
-          sx={{ flex: 1, ...textFieldSx }}
-        />
-      </Box>
-
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: {
-            xs: 'column',
-            sm: 'row'
-          },
-          alignItems: {
-            xs: 'stretch',
-            sm: 'center'
-          },
-          gap: 2,
-          mb: 3
-        }}
-      >
-        <TextField
-          label={
-            <span>
-              이메일을 입력해 주세요. <span style={{ color: 'red' }}>*</span>
-            </span>
-          }
-          placeholder='example(한글 입력 불가)'
-          value={emailId}
-          onChange={e => setEmailId(e.target.value.replace(/[^a-zA-Z0-9._%+-]/g, ''))}
-          sx={{ flex: 1, ...textFieldSx }}
-        />
-
+          📞 연락처 정보
+        </Typography>
         <Box
           sx={{
-            display: {
-              xs: 'none',
-              sm: 'block'
+            display: 'flex',
+            flexDirection: {
+              xs: 'column',
+              sm: 'row'
             },
-            fontWeight: 500,
-            fontSize: '25px'
+            gap: 2,
+            mb: 3
           }}
         >
-          @
-        </Box>
+          <TextField
+            select
+            value={phone1}
+            onChange={e => setPhone1(e.target.value)}
+            sx={{
+              width: {
+                xs: '100%',
+                sm: 120
+              },
+              ...textFieldSx
+            }}
+          >
+            <MenuItem value='010'>010</MenuItem>
+            <MenuItem value='011'>011</MenuItem>
+            <MenuItem value='016'>016</MenuItem>
+            <MenuItem value='017'>017</MenuItem>
+            <MenuItem value='018'>018</MenuItem>
+            <MenuItem value='019'>019</MenuItem>
+            <MenuItem value='070'>070</MenuItem>
+          </TextField>
 
-        <TextField
-          select
-          value={emailDomain}
-          onChange={e => setEmailDomain(e.target.value)}
-          sx={{
-            width: {
-              xs: '100%',
-              sm: 220
-            },
-            ...textFieldSx
-          }}
-        >
-          <MenuItem value='gmail.com'>gmail.com</MenuItem>
-          <MenuItem value='naver.com'>naver.com</MenuItem>
-          <MenuItem value='daum.net'>daum.net</MenuItem>
-          <MenuItem value='kakao.com'>kakao.com</MenuItem>
-          <MenuItem value='hanmail.net'>hanmail.net</MenuItem>
-          <MenuItem value='custom'>직접 입력</MenuItem>
-        </TextField>
+          <TextField
+            value={phone2}
+            label={
+              <span>
+                전화번호 앞자리 <span style={{ color: 'red' }}>*</span>
+              </span>
+            }
+            inputProps={{ maxLength: 4 }}
+            onChange={e => setPhone2(e.target.value.replace(/[^0-9]/g, ''))}
+            sx={{ flex: 1, ...textFieldSx }}
+          />
+
+          <TextField
+            value={phone3}
+            label={
+              <span>
+                전화번호 뒷자리<span style={{ color: 'red' }}>*</span>
+              </span>
+            }
+            inputProps={{ maxLength: 4 }}
+            onChange={e => setPhone3(e.target.value.replace(/[^0-9]/g, ''))}
+            sx={{ flex: 1, ...textFieldSx }}
+          />
+        </Box>
       </Box>
 
-      {emailDomain === 'custom' && (
-        <TextField
-          fullWidth
-          label={
-            <span>
-              도메인을 입력해 주세요. <span style={{ color: 'red' }}>*</span>
-            </span>
-          }
-          placeholder='example.com'
-          value={customDomain}
-          onChange={e => setCustomDomain(e.target.value.replace(/[^a-zA-Z0-9.-]/g, ''))}
-          sx={{ mb: 3, ...textFieldSx }}
-        />
-      )}
+      <Box
+        sx={{
+          mb: 3,
+          p: 2,
+          border: '1px solid #00A887',
+          borderRadius: '16px'
+        }}
+      >
+        <Typography
+          sx={{
+            mb: 2,
+            fontWeight: 700,
+            fontSize: 15,
+            color: '#111'
+          }}
+        >
+          📧 이메일 정보
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: {
+              xs: 'column',
+              sm: 'row'
+            },
+            alignItems: {
+              xs: 'stretch',
+              sm: 'center'
+            },
+            gap: 2,
+            mb: 3
+          }}
+        >
+          <TextField
+            label={
+              <span>
+                이메일을 입력해 주세요. <span style={{ color: 'red' }}>*</span>
+              </span>
+            }
+            placeholder='example(한글 입력 불가)'
+            value={emailId}
+            onChange={e => setEmailId(e.target.value.replace(/[^a-zA-Z0-9._%+-]/g, ''))}
+            sx={{ flex: 1, ...textFieldSx }}
+          />
+
+          <Box
+            sx={{
+              display: {
+                xs: 'none',
+                sm: 'block'
+              },
+              fontWeight: 500,
+              fontSize: '25px'
+            }}
+          >
+            @
+          </Box>
+
+          <TextField
+            select
+            value={emailDomain}
+            onChange={e => setEmailDomain(e.target.value)}
+            sx={{
+              width: {
+                xs: '100%',
+                sm: 220
+              },
+              ...textFieldSx
+            }}
+          >
+            <MenuItem value='gmail.com'>gmail.com</MenuItem>
+            <MenuItem value='naver.com'>naver.com</MenuItem>
+            <MenuItem value='daum.net'>daum.net</MenuItem>
+            <MenuItem value='kakao.com'>kakao.com</MenuItem>
+            <MenuItem value='hanmail.net'>hanmail.net</MenuItem>
+            <MenuItem value='custom'>직접 입력</MenuItem>
+          </TextField>
+        </Box>
+
+        {emailDomain === 'custom' && (
+          <TextField
+            fullWidth
+            label={
+              <span>
+                도메인을 입력해 주세요. <span style={{ color: 'red' }}>*</span>
+              </span>
+            }
+            placeholder='example.com'
+            value={customDomain}
+            onChange={e => setCustomDomain(e.target.value.replace(/[^a-zA-Z0-9.-]/g, ''))}
+            sx={{ mb: 3, ...textFieldSx }}
+          />
+        )}
+      </Box>
 
       <TextField fullWidth disabled value={inquiryType} sx={{ mb: 3 }} />
 

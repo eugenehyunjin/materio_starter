@@ -181,17 +181,19 @@ export default function ServiceSection() {
 
                   transition: 'transform .8s cubic-bezier(.22,.61,.36,1), box-shadow .8s cubic-bezier(.22,.61,.36,1)',
 
-                  '&:hover': {
-                    transform: positions[index].transform
-                      ? `${positions[index].transform} translateY(-16px)`
-                      : 'translateY(-16px)',
+                  '@media (hover: hover)': {
+                    '&:hover': {
+                      transform: positions[index].transform
+                        ? `${positions[index].transform} translateY(-16px)`
+                        : 'translateY(-16px)',
 
-                    boxShadow: '0 35px 80px rgba(0,0,0,.28)'
-                  },
+                      boxShadow: '0 35px 80px rgba(0,0,0,.28)'
+                    },
 
-                  '&:hover .card-image': {
-                    transform: 'scale(1.08)',
-                    boxShadow: '0 35px 80px rgba(0,0,0,.28), 0 0 40px rgba(0,168,135,.12)'
+                    '&:hover .card-image': {
+                      transform: 'scale(1.08)',
+                      boxShadow: '0 35px 80px rgba(0,0,0,.28), 0 0 40px rgba(0,168,135,.12)'
+                    }
                   }
                 }}
               >

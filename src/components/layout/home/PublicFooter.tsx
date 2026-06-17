@@ -99,7 +99,7 @@ export default function PublicFooter() {
             justifyContent: 'space-between',
 
             alignItems: {
-              xs: 'center',
+              xs: 'self-start',
               md: 'flex-start'
             },
 
@@ -171,8 +171,9 @@ export default function PublicFooter() {
                   xs: 3,
                   md: 1
                 }}
-                justifyContent='center'
-                alignItems='center'
+                justifyContent='flex-start'
+                alignItems='flex-start'
+                display={{ xs: 'none', md: 'block' }}
               >
                 <Link
                   href='/about'
@@ -238,7 +239,7 @@ export default function PublicFooter() {
                       md: 'left'
                     },
                     justifyContent: {
-                      xs: 'center',
+                      xs: 'left',
                       md: 'left'
                     }
                   }}
@@ -284,7 +285,7 @@ export default function PublicFooter() {
                     color: '#111',
                     lineHeight: 1.8,
                     textAlign: {
-                      xs: 'center',
+                      xs: 'left',
                       md: 'left'
                     }
                   }}

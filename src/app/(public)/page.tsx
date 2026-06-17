@@ -8,7 +8,7 @@ import FeatureSection from '@/features/home/sections/FeatureSection'
 
 export const metadata = {
   title: '비케이위너㈜',
-  description: '아파트 생활 플랫폼'
+  description: '공동주택 연구 개발 기업'
 }
 
 export default function HomePage() {
